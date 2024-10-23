@@ -1,1 +1,1 @@
-# bedrock-knowledgebase-and-agents
+# Amazon Bedrock Knowledge Base and Agents
