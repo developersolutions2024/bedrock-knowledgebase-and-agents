@@ -66,8 +66,8 @@ def lambda_handler(event, context):
             },
             retrieveAndGenerateConfiguration= {
                 'knowledgeBaseConfiguration': {
-                    'knowledgeBaseId': 'H7RLOFWFX6',  # Ensure this ID is correct for your knowledge base
-                    'modelArn': 'arn:aws:bedrock:us-east-1::foundation-model/anthropic.claude-3-haiku-20240307-v1:0',
+                    'knowledgeBaseId': 'Knowledge_Base_ID',  # Ensure this ID is correct for your knowledge base
+                    'modelArn': 'arn:aws:bedrock:<region>::foundation-model/anthropic.claude-3-haiku-20240307-v1:0',
                     'retrievalConfiguration': {
                         'vectorSearchConfiguration': {
                             'overrideSearchType': 'HYBRID',
