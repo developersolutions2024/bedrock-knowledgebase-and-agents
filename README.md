@@ -1,6 +1,10 @@
 # Amazon Bedrock Knowledge Base and Agents
 
 
+## Enable Amazon Bedrock model
+
+
+
 ## How to create a knowledge base
 
 
