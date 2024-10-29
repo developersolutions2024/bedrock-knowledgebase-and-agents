@@ -1,0 +1,38 @@
+# RUN THIS SCRIPT MANUALY IN A BASH TERMINAL BLOCK BY BLOCK
+export AWS_ACCESS_KEY_ID=ASIA5G
+export AWS_SECRET_ACCESS_KEY=ouwdMzeY
+export AWS_SESSION_TOKEN=IQoJb3JpZ2luX2VjEJ3//////////w
+export AWS_ACCOUNT=9080
+export AWS_REGION=us-east-1
+
+# CREATE ECR REPO TO STORE THE LAMBDA CONTAINER
+aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com
+aws ecr create-repository --repository-name ingest-summary --region ${AWS_REGION} --image-scanning-configuration scanOnPush=true --image-tag-mutability MUTABLE
+
+# BUILD AND PUSH THE CONTAINER IMAGE IN ECR REPOSITORY
+docker build --platform linux/amd64 -t ingest-summary:latest .
+docker tag ingest-summary:latest ${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com/ingest-summary:latest
+docker push ${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com/ingest-summary:latest
+
+# RUN THE CONTAINER LOCALY
+docker run --env-file env.txt --platform linux/amd64 -p 9000:8080 --read-only ingest-summary:test 
+
+# TEST THE CONTAINER
+curl "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{"version":"1.0","knowledgeBaseId":"H7RLXXXX","dataSourceId":"HDNXXXX","ingestionJobId":"8SYXXXX","bucketName":"ingest-summary-test-intermediate","priorTask":"CHUNKING","inputFiles":[{"contentBatches":[{"key":"aws/bedrock/knowledge_bases/H7RLXXXX/HDNXXXX/8SY2XXXX/A_60_XXXX.pdf_1.JSON"}],"originalFileLocation":{"type":"S3","s3_location":{"uri":"s3://ingest-summary-XXXX/A_60_XXXX.pdf"}}}]}'
+
+# CREATE THE LAMBDA FUNCTION FROM THE CONTAINER IMAGE
+aws lambda create-function \
+  --region ${AWS_REGION} \
+  --function-name ingest-summary \
+  --package-type Image \
+  --code ImageUri=${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com/ingest-summary:latest \
+  --role arn:aws:iam::${AWS_ACCOUNT}:role/service-role/ingest-summary
+
+# UPDATE THE LAMBDA FUNCTION USING NEW CONTAINER IMAGE VERSION
+aws lambda update-function-code \
+  --region ${AWS_REGION} \
+  --function-name ingest-summary \
+  --image-uri ${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com/ingest-summary:latest
+
+
+

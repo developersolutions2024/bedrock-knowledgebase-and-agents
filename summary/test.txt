@@ -1,0 +1,37 @@
+# RUN THIS SCRIPT MANUALY IN A BASH TERMINAL BLOCK BY BLOCK
+export AWS_ACCESS_KEY_ID=ASIA5G
+export AWS_SECRET_ACCESS_KEY=ouwdMzeY
+export AWS_SESSION_TOKEN=IQoJb3JpZ2luX2VjEJ3//////////w
+export AWS_ACCOUNT=9080
+export AWS_REGION=us-east-1
+
+# CREATE ECR REPO TO STORE THE LAMBDA CONTAINER
+aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com
+aws ecr create-repository --repository-name summary --region ${AWS_REGION} --image-scanning-configuration scanOnPush=true --image-tag-mutability MUTABLE
+
+# BUILD AND PUSH THE CONTAINER IMAGE IN ECR REPOSITORY
+docker build --platform linux/amd64 -t summary:latest .
+docker tag summary:latest ${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com/summary:latest
+docker push ${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com/summary:latest
+
+# RUN THE CONTAINER LOCALY
+docker run --env-file env.txt --platform linux/amd64 -p 9000:8080 --read-only summary:test 
+
+# TEST THE CONTAINER
+curl "http://localhost:9000/2015-03-31/functions/function/invocations" -d '{"messageVersion":"1.0","agent":{"name":"agent_name","id":"toto","alias":"toto_alias","version":"1"},"inputText":"tell me about the 20th plenary meeting from the Sixtieth session","sessionId":"123456","actionGroup":"summarise","function":"summary","parameters":[{"name":"topic","type":"string","value":"20th plenary meeting from the Sixtieth session"},{"name":"secondary_topic","type":"string","value":"my holidays"}],"sessionAttributes":{"string":"string"},"promptSessionAttributes":{"string":"string"}}'
+
+# CREATE THE LAMBDA FUNCTION FROM THE CONTAINER IMAGE
+aws lambda create-function \
+  --region ${AWS_REGION} \
+  --function-name summary-2 \
+  --package-type Image \
+  --code ImageUri=${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com/summary:latest \
+  --role arn:aws:iam::${AWS_ACCOUNT}:role/service-role/summary
+
+# UPDATE THE LAMBDA FUNCTION USING NEW CONTAINER IMAGE VERSION
+aws lambda update-function-code \
+  --region ${AWS_REGION} \
+  --function-name summary-2 \
+  --image-uri ${AWS_ACCOUNT}.dkr.ecr.${AWS_REGION}.amazonaws.com/summary:latest
+
+

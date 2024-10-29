@@ -1,0 +1,5 @@
+langchain==0.3.2
+langchain_community==0.3.1
+langchain-aws==0.2.2
+anthropic==0.36.0
+PyPDF2==3.0.1
