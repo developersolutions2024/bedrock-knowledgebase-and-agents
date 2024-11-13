@@ -1,4 +1,4 @@
-# Amazon Bedrock Knowledge Base and Agents
+# Amazon Bedrock Knowledge Base and Agents ChatBot Solution Demo
 
 ## Table of Content
 - [Ingest Summary Env](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/tree/main/ingest_summary)
