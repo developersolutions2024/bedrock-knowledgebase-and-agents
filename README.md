@@ -72,45 +72,43 @@ You can create an Amazon Bedrock knowledge base to retrieve information from you
 
 4. Provide knowledge base details and set up the following configurations.
 
-- (Optional) Change the default name and provide a description for your knowledge base.
+    - (Optional) Change the default name and provide a description for your knowledge base.
 
-- Choose an AWS Identity and Access Management (IAM) role that provides Amazon Bedrock permission to access other required AWS services. You can let Amazon Bedrock create the service role or choose a [custom role that you have created](https://docs.aws.amazon.com/bedrock/latest/userguide/kb-permissions.html).
+    - Choose an AWS Identity and Access Management (IAM) role that provides Amazon Bedrock permission to access other required AWS services. You can let Amazon Bedrock create the service role or choose a [custom role that you have created](https://docs.aws.amazon.com/bedrock/latest/userguide/kb-permissions.html).
 
-- (Optional) Add tags to your knowledge base. For more information, see Tagging Amazon Bedrock resources.
+    - (Optional) Add tags to your knowledge base. For more information, see Tagging Amazon Bedrock resources.
 
-- Go to the next section.
+    - Go to the next section.
 
 5. Configure your data source to use for the knowledge base.
 
-    Follow the connection configuration steps for your selected data source. See Supported data sources to select your data source and follow the console connection configuration steps.
+    - Follow the connection configuration steps for your selected data source. See Supported data sources to select your data source and follow the console connection configuration steps.
 
-    (Optional) Configure the advanced settings as part the data source configuration.
+    - (Optional) Configure the advanced settings as part the data source configuration.
 
-    For KMS key settings, you can choose either a custom key or use the default provided data encryption key.
+        For KMS key settings, you can choose either a custom key or use the default provided data encryption key.
 
-    While converting your data into embeddings, Amazon Bedrock encrypts your transient data with a key that AWS owns and manages, by default. You can use your own KMS key. For more information, see Encryption of transient data storage during data ingestion.
+        While converting your data into embeddings, Amazon Bedrock encrypts your transient data with a key that AWS owns and manages, by default. You can use your own KMS key. For more information, see Encryption of transient data storage during data ingestion.
 
-    For data deletion policy settings, you can choose either:
+        For data deletion policy settings, you can choose either:
 
-        Delete: Deletes all data from your data source that’s converted into vector embeddings upon deletion of a knowledge base or data source resource. Note that the vector store itself is not deleted, only the data. This flag is ignored if an AWS account is deleted.
+            - Delete: Deletes all data from your data source that’s converted into vector embeddings upon deletion of a knowledge base or data source resource. Note that the vector store itself is not deleted, only the data. This flag is ignored if an AWS account is deleted.
 
-        Retain: Retains all data from your data source that’s converted into vector embeddings upon deletion of a knowledge base or data source resource. Note that the vector store itself is not deleted if you delete a knowledge base or data source resource.
+            - Retain: Retains all data from your data source that’s converted into vector embeddings upon deletion of a knowledge base or data source resource. Note that the vector store itself is not deleted if you delete a knowledge base or data source resource.
 
-    Configure the content chunking and parsing settings as part the data source configuration.
+    - Configure the content chunking and parsing settings as part the data source configuration.
 
-    Choose one of the follow chunking options:
+        Choose one of the follow chunking options:
 
-        Fixed-size chunking: Content split into chunks of text of your set approximate token size. You can set the maximum number of tokens that must not exceed for a chunk and the overlap percentage between consecutive chunks.
+            - Fixed-size chunking: Content split into chunks of text of your set approximate token size. You can set the maximum number of tokens that must not exceed for a chunk and the overlap percentage between consecutive chunks.
 
-        Default chunking: Content split into chunks of text of up to 300 tokens. If a single document or piece of content contains less than 300 tokens, the document is not further split.
+            - Default chunking: Content split into chunks of text of up to 300 tokens. If a single document or piece of content contains less than 300 tokens, the document is not further split.
 
-        Hierarchical chunking: Content organized into nested structures of parent-child chunks. You set the maximum parent chunk token size and the maximum child chunk token size. You also set the absolute number of overlap tokens between consecutive parent chunks and consecutive child chunks.
+            - Hierarchical chunking: Content organized into nested structures of parent-child chunks. You set the maximum parent chunk token size and the maximum child chunk token size. You also set the absolute number of overlap tokens between consecutive parent chunks and consecutive child chunks.
 
-        Semantic chunking: Content organized into semantically similar text chunks or groups of sentences. You set the maximum number of sentences surrounding the target/current sentence to group together (buffer size). You also set the breakpoint percentile threshold for dividing the text into meaningful chunks. Semantic chunking uses a foundation model. View Amazon Bedrock pricing
+            - Semantic chunking: Content organized into semantically similar text chunks or groups of sentences. You set the maximum number of sentences surrounding the target/current sentence to group together (buffer size). You also set the breakpoint percentile threshold for dividing the text into meaningful chunks. Semantic chunking uses a foundation model. View [Amazon Bedrock pricing](https://aws.amazon.com/bedrock/pricing/) for information on the cost of foundation models.
 
-    for information on the cost of foundation models.
-
-    No chunking: Each document is treated as a single text chunk. You might want to pre-process your documents by splitting them into separate files.
+            - No chunking: Each document is treated as a single text chunk. You might want to pre-process your documents by splitting them into separate files.
 
 Note
 
