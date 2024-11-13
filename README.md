@@ -171,9 +171,47 @@ Configuration    | Description |
 | Foundation model (FM) | An FM for the agent to invoke to perform orchestration   |
 |Instructions   | Natural language describing what the agent should do and how it should interact with users    |
 
-You should also configure at least one action group or knowledge base for the agent. If you prepare an agent with no action groups or knowledge bases, it will return responses based only on the FM and instructions and base prompt templates.
+You should also configure at least one action group or knowledge base for the agent. If you prepare an agent with no action groups or knowledge bases, it will return responses based only on the FM and instructions and [base prompt templates](https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts.html).
 
 To learn how to create an agent, select the tab corresponding to your method of choice and follow the steps:
+
+**To create an agent**
+
+1. Sign in to the AWS Management Console using an [IAM role with Amazon Bedrock permissions](https://docs.aws.amazon.com/bedrock/latest/userguide/getting-started.html), and open the Amazon Bedrock console at https://console.aws.amazon.com/bedrock/.
+
+2. Select **Agents** from the left navigation pane.
+
+3. In the **Agents** section, choose **Create Agent**.
+
+4. (Optional) Change the automatically generated Name for the agent and provide an optional **Description** for it.
+
+5. Choose **Create**. Your agent is created and you will be taken to the **Agent builder** for your newly created agent, where you can configure your agent.
+
+6. You can continue to the following procedure to configure your agent or return to the Agent builder later.
+
+**To configure your agent**
+
+1. If you're not already in the agent builder, do the following:
+
+    - Sign in to the AWS Management Console using an [IAM role with Amazon Bedrock permissions](https://docs.aws.amazon.com/bedrock/latest/userguide/getting-started.html), and open the Amazon Bedrock console at https://console.aws.amazon.com/bedrock/.
+
+    - Select **Agents** from the left navigation pane. Then, choose an agent in the **Agents** section.
+
+    - Choose **Edit in Agent builder**.
+
+2. In the **Agent details** section, you can set up the following configurations:
+
+   - Edit the **Agent name** or **Agent description**.
+
+   - For the **Agent resource role**, select one of the following options:
+
+        - **Create and use a new service role** – Let Amazon Bedrock create the service role and set up the required permissions on your behalf.
+
+        - **Use an existing service role** – Use a [custom role](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-permissions.html) that you set up previously.
+
+   - For **Select model**, select an FM for your agent to invoke during orchestration.
+
+     By default, models optimized for agents are shown. To see all models supported by Amazon Bedrock Agents, clear **Bedrock Agents optimized**.
 
 
 ## How to create an action group
