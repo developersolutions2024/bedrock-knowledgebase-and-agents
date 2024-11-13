@@ -152,8 +152,24 @@ You can create an Amazon Bedrock knowledge base to retrieve information from you
 
 
 
-## How to create an agent
+## Create and configure agent manually
 
+To create an agent with Amazon Bedrock, you set up the following components:
+
+- The configuration of the agent, which defines the purpose of the agent and indicates the foundation model (FM) that it uses to generate prompts and responses.
+
+- At least one of the following:
+
+    - Action groups that define what actions the agent is designed to perform.
+
+    - A knowledge base of data sources to augment the generative capabilities of the agent by allowing search and query.
+
+You can minimally create an agent that only has a name. To Prepare an agent so that you can [test](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-test.html) or [deploy](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-deploy.html) it, you must minimally configure the following components:
+ Month    | Savings |
+| -------- | ------- |
+| January  | $250    |
+| February | $80     |
+| March    | $420    |
 
 
 ## How to create an action group
