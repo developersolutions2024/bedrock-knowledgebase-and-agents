@@ -44,13 +44,13 @@ Once access is provided to a model, it is available for all users in the AWS acc
 
 **Note**: For AWS GovCloud (US) customers, follow these steps to access models that are available in AWS GovCloud (US):
 
-    - AWS GovCloud (US) users must locate their standard AWS account ID associated with their AWS GovCloud (US) account ID. AWS GovCloud (US) users can follow this guide Finding your associated standard AWS account ID, if they don't already know their ID. Navigate to the model access page on Amazon Bedrock console. Select the model(s) that you want to enable. Select Request model access and follow the step-by-step subscription flow.
+- AWS GovCloud (US) users must locate their standard AWS account ID associated with their AWS GovCloud (US) account ID. AWS GovCloud (US) users can follow this guide Finding your associated standard AWS account ID, if they don't already know their ID. Navigate to the model access page on Amazon Bedrock console. Select the model(s) that you want to enable. Select Request model access and follow the step-by-step subscription flow.
 
-    - AWS GovCloud (US) customers use their standard AWS account ID (which is linked to their AWS GovCloud (US) account ID) to first enable model access. Navigate to the model access page on Amazon Bedrock console in either us-east-1 or us-west-2. Select the model(s) that you want to enable. Select Request model access and follow the step-by-step subscription flow.
+- AWS GovCloud (US) customers use their standard AWS account ID (which is linked to their AWS GovCloud (US) account ID) to first enable model access. Navigate to the model access page on Amazon Bedrock console in either us-east-1 or us-west-2. Select the model(s) that you want to enable. Select Request model access and follow the step-by-step subscription flow.
 
-    - Log into your AWS GovCloud (US) account and navigate to Amazon Bedrock in us-gov-west-1 and follow the same model access sign-up steps. This will grant you a regional entitlement to access the models in us-gov-west-1.
+- Log into your AWS GovCloud (US) account and navigate to Amazon Bedrock in us-gov-west-1 and follow the same model access sign-up steps. This will grant you a regional entitlement to access the models in us-gov-west-1.
 
-    - The model will be accessible to the linked AWS GovCloud (US) account on us-gov-west-1.
+- The model will be accessible to the linked AWS GovCloud (US) account on us-gov-west-1.
 
 If you don't have permissions to request access to a model, an error banner appears. Contact your account administrator to ask them to request access to the model for you or to provide you permissions to request access to the model.
 
