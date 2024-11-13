@@ -60,7 +60,7 @@ To learn how to create an agent, select the tab corresponding to your method of 
 
      By default, models optimized for agents are shown. To see all models supported by Amazon Bedrock Agents, clear **Bedrock Agents optimized**.
 
-     ![bedrock image](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/images/raw/main/agents-optimized-model-selection.png)
+     ![bedrock image](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/raw/main/images/agents-optimized-model-selection.png)
 
    - In **Instructions for the Agent**, enter details to tell the agent what it should do and how it should interact with users. The instructions replace the $instructions$ placeholder in the [orchestration prompt template](https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-placeholders.html#placeholders-orchestration). Following is an example of instructions:
 
