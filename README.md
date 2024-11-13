@@ -10,31 +10,29 @@ Before you can use a foundation model in Amazon Bedrock, you must request access
 Once access is provided to a model, it is available for all users in the AWS account.
 **To add or remove access to foundation models**
 
-1. Make sure you have permissions to request access, or modify access, to Amazon Bedrock foundation models.
+1. Make sure you have [permissions](https://docs.aws.amazon.com/bedrock/latest/userguide/model-access-permissions.html) to request access, or modify access, to Amazon Bedrock foundation models.
 
 2. Sign into the Amazon Bedrock console at https://console.aws.amazon.com/bedrock/
 
-.
+3. In the left navigation pane, under **Bedrock configurations**, choose **Model access**.
 
-In the left navigation pane, under Bedrock configurations, choose Model access.
+4. On the **Model access** page, choose **Modify model access**.
 
-On the Model access page, choose Modify model access.
+5. Select the models that you want the account to have access to and unselect the models that you don't want the account to have access to. You have the following options:
 
-Select the models that you want the account to have access to and unselect the models that you don't want the account to have access to. You have the following options:
+    Be sure to review the **End User License Agreement (EULA)** for terms and conditions of using a model before requesting access to it.
 
-Be sure to review the End User License Agreement (EULA) for terms and conditions of using a model before requesting access to it.
+    - Select the check box next to an individual model to check or uncheck it.
 
-    Select the check box next to an individual model to check or uncheck it.
+    - Select the top check box to check or uncheck all models.
 
-    Select the top check box to check or uncheck all models.
+    - Select how the models are grouped and then check or uncheck all the models in a group by selecting the check box next to the group. For example, you can choose to Group by provider and then select the check box next to Cohere to check or uncheck all Cohere models.
 
-    Select how the models are grouped and then check or uncheck all the models in a group by selecting the check box next to the group. For example, you can choose to Group by provider and then select the check box next to Cohere to check or uncheck all Cohere models.
+6. Choose **Next**.
 
-Choose Next.
+7. If you add access to Anthropic models, you must describe your use case details. Choose **Submit use case details**, fill out the form, and then select **Submit form**. Notification of access is granted or denied based on your answers when completing the form for the provider.
 
-If you add access to Anthropic models, you must describe your use case details. Choose Submit use case details, fill out the form, and then select Submit form. Notification of access is granted or denied based on your answers when completing the form for the provider.
-
-Review the access changes you're making, and then read the Terms.
+8. Review the access changes you're making, and then read the **Terms**.
 
 
 
