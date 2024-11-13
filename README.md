@@ -34,15 +34,15 @@ Once access is provided to a model, it is available for all users in the AWS acc
 
 8. Review the access changes you're making, and then read the **Terms**.
 
-**Note**: Your use of Amazon Bedrock foundation models is subject to the [seller's pricing terms](https://aws.amazon.com/bedrock/pricing/), EULA, and the [AWS service terms](https://aws.amazon.com/service-terms).
+    **Note**: Your use of Amazon Bedrock foundation models is subject to the [seller's pricing terms](https://aws.amazon.com/bedrock/pricing/), EULA, and the [AWS service terms](https://aws.amazon.com/service-terms).
 
 9. If you agree with the terms, choose Submit. The changes can take several minutes to be reflected in the console.
 
-**Note**: If you revoke access to a model, it can still be accessed through the API for some time after you complete this action while the changes propagate. To immediately remove access in the meantime, add an [IAM policy to a role to deny access to the model](https://docs.aws.amazon.com/bedrock/latest/userguide/security_iam_id-based-policy-examples.html#security_iam_id-based-policy-examples-deny-inference).
+    **Note**: If you revoke access to a model, it can still be accessed through the API for some time after you complete this action while the changes propagate. To immediately remove access in the meantime, add an [IAM policy to a role to deny access to the model](https://docs.aws.amazon.com/bedrock/latest/userguide/security_iam_id-based-policy-examples.html#security_iam_id-based-policy-examples-deny-inference).
 
 10. If your request is successful, the **Access status** changes to **Access granted** or **Available to request**.
 
-**Note**: For AWS GovCloud (US) customers, follow these steps to access models that are available in AWS GovCloud (US):
+    **Note**: For AWS GovCloud (US) customers, follow these steps to access models that are available in AWS GovCloud (US):
 
 - AWS GovCloud (US) users must locate their standard AWS account ID associated with their AWS GovCloud (US) account ID. AWS GovCloud (US) users can follow this guide Finding your associated standard AWS account ID, if they don't already know their ID. Navigate to the model access page on Amazon Bedrock console. Select the model(s) that you want to enable. Select Request model access and follow the step-by-step subscription flow.
 
