@@ -102,22 +102,22 @@ After an agent is created, you can add action groups to it by doing the followin
     
     To add another function to your action group by defining another set of parameters, choose Add action group function.
 
-    If you selected Define with API schemas, you'll have an Action group schema section with the following options:
+    - If you selected **Define with API schemas**, you'll have an **Action group schema** section with the following options:
 
-        To use an OpenAPI schema that you previously prepared with API descriptions, structures, and parameters for the action group, select Select API schema and provide a link to the Amazon S3 URI of the schema.
+        - To use an OpenAPI schema that you previously prepared with API descriptions, structures, and parameters for the action group, select **Select API schema** and provide a link to the Amazon S3 URI of the schema.
 
-        To define the OpenAPI schema with the in-line schema editor, select Define via in-line schema editor. A sample schema appears that you can edit.
+        - To define the OpenAPI schema with the in-line schema editor, select **Define via in-line schema editor**. A sample schema appears that you can edit.
 
-            Select the format for the schema by using the dropdown menu next to Format.
+            - Select the format for the schema by using the dropdown menu next to **Format**.
 
-            To import an existing schema from S3 to edit, select Import schema, provide the S3 URI, and select Import.
+            - To import an existing schema from S3 to edit, select **Import schema**, provide the S3 URI, and select **Import**.
 
-            To restore the schema to the original sample schema, select Reset and then confirm the message that appears by selecting Reset again.
+            - To restore the schema to the original sample schema, select Reset and then confirm the message that appears by selecting **Reset** again.
 
-When you're done creating the action group, choose Add. If you defined an API schema, a green success banner appears if there are no issues. If there are issues validating the schema, a red banner appears. You have the following options:
+9. When you're done creating the action group, choose **Add**. If you defined an API schema, a green success banner appears if there are no issues. If there are issues validating the schema, a red banner appears. You have the following options:
 
-    Scroll through the schema to see the lines where an error or warning about formatting exists. An X indicates a formatting error, while an exclamation mark indicates a warning about formatting.
+    - Scroll through the schema to see the lines where an error or warning about formatting exists. An X indicates a formatting error, while an exclamation mark indicates a warning about formatting.
 
-    Select View details in the red banner to see a list of errors about the content of the API schema.
+    - Select **View details** in the red banner to see a list of errors about the content of the API schema.
 
-Make sure to Prepare to apply the changes that you have made to the agent before testing it.
+10. Make sure to **Prepare** to apply the changes that you have made to the agent before testing it.
