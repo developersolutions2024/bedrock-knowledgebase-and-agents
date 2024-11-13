@@ -69,7 +69,7 @@ After an agent is created, you can add action groups to it by doing the followin
         - To request confirmation from the user before the function is invoked, select **Enabled**. Requesting confirmation before invoking the function may safeguard your application from taking actions due to malicious prompt injections.
 
         - In the **Parameters** subsection, choose **Add parameter**. Define the following fields:
-        - 
+      
         |   Field 	| Description |
         | --------- | ----------- |
         | Name 	| Give a name to the parameter.|
@@ -77,14 +77,15 @@ After an agent is created, you can add action groups to it by doing the followin
         | Type 	| Specify the data type of the parameter.|
         | Required 	| Specify whether the agent requires the parameter from the user.|
 
-        To add another parameter, choose Add parameter.
+        - To add another parameter, choose **Add parameter**.
 
-        To edit a field in a parameter, select the field and edit it as necessary.
+        - To edit a field in a parameter, select the field and edit it as necessary.
 
-        To delete a parameter, choose the delete icon ( Trapezoid-shaped diagram showing data flow from source to destination through AWS Transfer Family. ) in the row containing the parameter.
+        - To delete a parameter, choose the **delete icon** in the row containing the parameter.
 
-    If you prefer to define the function by using a JSON object, choose JSON editor instead of Table. The JSON object format is as follows (each key in the parameters object is a parameter name that you provide):
+    If you prefer to define the function by using a JSON object, choose **JSON editor** instead of **Table**. The JSON object format is as follows (each key in the parameters object is a parameter name that you provide):
 
+    ```
     {
         "name": "string",
         "description": "string",
@@ -97,7 +98,8 @@ After an agent is created, you can add action groups to it by doing the followin
             }
         ]
     }
-
+    ```
+    
     To add another function to your action group by defining another set of parameters, choose Add action group function.
 
     If you selected Define with API schemas, you'll have an Action group schema section with the following options:
