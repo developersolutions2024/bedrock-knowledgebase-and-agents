@@ -92,21 +92,21 @@ You can create an Amazon Bedrock knowledge base to retrieve information from you
 
         For data deletion policy settings, you can choose either:
 
-            - Delete: Deletes all data from your data source that’s converted into vector embeddings upon deletion of a knowledge base or data source resource. Note that the vector store itself is not deleted, only the data. This flag is ignored if an AWS account is deleted.
+        - Delete: Deletes all data from your data source that’s converted into vector embeddings upon deletion of a knowledge base or data source resource. Note that the vector store itself is not deleted, only the data. This flag is ignored if an AWS account is deleted.
 
-            - Retain: Retains all data from your data source that’s converted into vector embeddings upon deletion of a knowledge base or data source resource. Note that the vector store itself is not deleted if you delete a knowledge base or data source resource.
+        - Retain: Retains all data from your data source that’s converted into vector embeddings upon deletion of a knowledge base or data source resource. Note that the vector store itself is not deleted if you delete a knowledge base or data source resource.
 
     - Configure the content chunking and parsing settings as part the data source configuration.
 
         Choose one of the follow chunking options:
 
-            - Fixed-size chunking: Content split into chunks of text of your set approximate token size. You can set the maximum number of tokens that must not exceed for a chunk and the overlap percentage between consecutive chunks.
+        - Fixed-size chunking: Content split into chunks of text of your set approximate token size. You can set the maximum number of tokens that must not exceed for a chunk and the overlap percentage between consecutive chunks.
 
-            - Default chunking: Content split into chunks of text of up to 300 tokens. If a single document or piece of content contains less than 300 tokens, the document is not further split.
+        - Default chunking: Content split into chunks of text of up to 300 tokens. If a single document or piece of content contains less than 300 tokens, the document is not further split.
 
-            - Hierarchical chunking: Content organized into nested structures of parent-child chunks. You set the maximum parent chunk token size and the maximum child chunk token size. You also set the absolute number of overlap tokens between consecutive parent chunks and consecutive child chunks.
+        - Hierarchical chunking: Content organized into nested structures of parent-child chunks. You set the maximum parent chunk token size and the maximum child chunk token size. You also set the absolute number of overlap tokens between consecutive parent chunks and consecutive child chunks.
 
-            - Semantic chunking: Content organized into semantically similar text chunks or groups of sentences. You set the maximum number of sentences surrounding the target/current sentence to group together (buffer size). You also set the breakpoint percentile threshold for dividing the text into meaningful chunks. Semantic chunking uses a foundation model. View [Amazon Bedrock pricing](https://aws.amazon.com/bedrock/pricing/) for information on the cost of foundation models.
+        - Semantic chunking: Content organized into semantically similar text chunks or groups of sentences. You set the maximum number of sentences surrounding the target/current sentence to group together (buffer size). You also set the breakpoint percentile threshold for dividing the text into meaningful chunks. Semantic chunking uses a foundation model. View [Amazon Bedrock pricing](https://aws.amazon.com/bedrock/pricing/) for information on the cost of foundation models.
 
             - No chunking: Each document is treated as a single text chunk. You might want to pre-process your documents by splitting them into separate files.
 
