@@ -142,7 +142,8 @@ You can create an Amazon Bedrock knowledge base to retrieve information from you
 
 
 
-##After you've created a knowledge base, you might have to set up the following security configurations##:
+### After you've created a knowledge base, you might have to set up the following security configurations ###:
+
 **Topics**:
 
     - [Set up data access policies for your knowledge base](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-create.html#kb-create-security-data)
