@@ -7,4 +7,7 @@
 - [Use action groups to define actions for your agent to perform](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/intructions/Use%20action%20groups%20to%20define%20actions%20for%20your%20agent%20to%20perform.md)
 - [Lambda Functions](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/tree/main/lambda-functions)
   - [agents.py](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/lambda-functions/agents.py)
+  - [uiTranslator](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/lambda-functions/uiTranslator.py)
+  - [whoIs.py](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/lambda-functions/whoIs.py)
+- [Language Configutation](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/language-config/translation.json)
    
