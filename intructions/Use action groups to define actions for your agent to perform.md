@@ -18,9 +18,9 @@ To learn more about the components of an action group and how to create the acti
 
 **Topics**:
 
-- Define actions in the action group
-- Handle fulfillment of the action
-- Add an action group to your agent in Amazon Bedrock
-- View information about an action group
-- Modify an action group
-- Delete an action group
+- [Define actions in the action group](https://docs.aws.amazon.com/bedrock/latest/userguide/action-define.html)
+- [Handle fulfillment of the action](https://docs.aws.amazon.com/bedrock/latest/userguide/action-handle.html)
+- [Add an action group to your agent in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-action-add.html)
+- [View information about an action group](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-action-view.html)
+- [Modify an action group](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-action-edit.html)
+- [Delete an action group](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-action-delete.html)
