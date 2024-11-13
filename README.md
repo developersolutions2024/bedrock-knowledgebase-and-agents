@@ -62,7 +62,12 @@ You can create an Amazon Bedrock knowledge base to retrieve information from you
 
 **Note**: You can’t create a knowledge base with a root user. Log in with an IAM user before starting these steps.
 
-=== "tab_1"
+ ## title {.tabset .tabset-fade}
+content above tabbed region.
+
+### tab Social-Media
+
+tab content Social-Media
 
 
 
