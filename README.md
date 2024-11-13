@@ -58,6 +58,25 @@ If you don't have permissions to request access to a model, an error banner appe
 
 ## How to create a knowledge base
 
+You can create an Amazon Bedrock knowledge base to retrieve information from your proprietary data and generate responses to answer natural language questions. As part of creating a knowledge base, you configure a data source and a vector store of your choice.
+
+**Note**: You can’t create a knowledge base with a root user. Log in with an IAM user before starting these steps.
+
+## Results {.tabset}
+
+### Plots
+
+We show a scatter plot in this section.
+
+```{r, fig.dim=c(5, 3)}
+par(mar = c(4, 4, .5, .1))
+plot(mpg ~ hp, data = mtcars, pch = 19)
+```
+
+### Tables
+
+We show the data in this tab.
+
 
 
 ## How to create an agent
