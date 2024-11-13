@@ -62,20 +62,7 @@ You can create an Amazon Bedrock knowledge base to retrieve information from you
 
 **Note**: You can’t create a knowledge base with a root user. Log in with an IAM user before starting these steps.
 
-## Results {.tabset}
-
-### Plots
-
-We show a scatter plot in this section.
-
-```{r, fig.dim=c(5, 3)}
-par(mar = c(4, 4, .5, .1))
-plot(mpg ~ hp, data = mtcars, pch = 19)
-```
-
-### Tables
-
-We show the data in this tab.
+=== "tab_1"
 
 
 
