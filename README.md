@@ -122,7 +122,7 @@ You can create an Amazon Bedrock knowledge base to retrieve information from you
 
 7. Choose a vector store to store the vector embeddings for your knowledge base. See [supported vector stores](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base-setup.html) for information.
 
-    - Quick create a new vector store – Amazon Bedrock creates an Amazon OpenSearch Serverless vector search collection for you. With this option, a public vector search collection and vector index is set up for you with the required fields and necessary configurations. After the collection is created, you can manage it in the Amazon OpenSearch Serverless console or through the AWS API. For more information, see Working with vector search collections in the Amazon OpenSearch Service Developer Guide. If you select this option, you can optionally enable the following settings:
+    - **Quick create a new vector store** – Amazon Bedrock creates an Amazon OpenSearch Serverless vector search collection for you. With this option, a public vector search collection and vector index is set up for you with the required fields and necessary configurations. After the collection is created, you can manage it in the Amazon OpenSearch Serverless console or through the AWS API. For more information, see Working with vector search collections in the Amazon OpenSearch Service Developer Guide. If you select this option, you can optionally enable the following settings:
 
         - To enable redundant active replicas, such that the availability of your vector store isn't compromised in case of infrastructure failure, select Enable redundancy (active replicas).
 
@@ -130,7 +130,7 @@ You can create an Amazon Bedrock knowledge base to retrieve information from you
 
         - To encrypt the automated vector store with a customer managed key select Add customer-managed KMS key for Amazon OpenSearch Serverless vector – optional and choose the key. For more information, see Encryption of information passed to Amazon OpenSearch Service.
 
-    - Select a vector store you have created – Select the service for the vector store that you have already created. Fill in the fields to allow Amazon Bedrock to map information from the knowledge base to your vector store, so that it can store, update, and manage vector embeddings. For more information about the fields, see Set up your own supported vector store.
+    - **Select a vector store you have created** – Select the service for the vector store that you have already created. Fill in the fields to allow Amazon Bedrock to map information from the knowledge base to your vector store, so that it can store, update, and manage vector embeddings. For more information about the fields, see Set up your own supported vector store.
 
     **Note**: If you use a database in Amazon OpenSearch Serverless, Amazon Aurora, or MongoDB Atlas, you need to have configured the fields under Field mapping beforehand. If you use a database in Pinecone or Redis Enterprise Cloud, you can provide names for these fields here and Amazon Bedrock will dynamically create them in the vector store for you.
 
