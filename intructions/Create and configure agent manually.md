@@ -62,42 +62,40 @@ To learn how to create an agent, select the tab corresponding to your method of 
 
      ![bedrock image](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/raw/main/agents-optimized-model-selection.png)
 
-   - In **Instructions for the Agent, enter details to tell the agent what it should do and how it should interact with users. The instructions replace the $instructions$ placeholder in the orchestration prompt template. Following is an example of instructions:
+   - In **Instructions for the Agent**, enter details to tell the agent what it should do and how it should interact with users. The instructions replace the $instructions$ placeholder in the [orchestration prompt template](https://docs.aws.amazon.com/bedrock/latest/userguide/prompt-placeholders.html#placeholders-orchestration). Following is an example of instructions:
 
-You are an office assistant in an insurance agency. You are friendly and polite. You help with managing insurance claims and coordinating pending paperwork.
+    *You are an office assistant in an insurance agency. You are friendly and polite. You help with managing insurance claims and coordinating pending paperwork*.
 
-If you expand Additional settings, you can modify the following configurations:
+  - If you expand **Additional settings**, you can modify the following configurations:
 
-    Code Interpreter – (Optional) Choose whether to enable agent to handle tasks that involve writing, running, testing, and troubleshooting code. For details, see Generate, run, and test code with code interpretation.
+    - **Code Interpreter** – (Optional) Choose whether to enable agent to handle tasks that involve writing, running, testing, and troubleshooting code. For details, see [Generate, run, and test code with code interpretation](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-code-interpretation.html).
 
-    User input – (Optional) Choose whether to allow the agent to request more information from the user if it doesn't have enough information. For details, see Configure agent to request information from user.
+    - **User input** – (Optional) Choose whether to allow the agent to request more information from the user if it doesn't have enough information. For details, see [Configure agent to request information from user](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-user-input.html).
 
-    KMS key selection – (Optional) By default, AWS encrypts agent resources with an AWS managed key. To encrypt your agent with your own customer managed key, for the KMS key selection section, select Customize encryption settings (advanced). To create a new key, select Create an AWS KMS key and then refresh this window. To use an existing key, select a key for Choose an AWS KMS key.
+    - **KMS key selection** – (Optional) By default, AWS encrypts agent resources with an AWS managed key. To encrypt your agent with your own customer managed key, for the KMS key selection section, select **Customize encryption settings (advanced)**. To create a new key, select **Create an AWS KMS key** and then refresh this window. To use an existing key, select a key for **Choose an AWS KMS key**.
 
-    Idle session timeout – By default, if a user hasn't responded for 30 minutes in a session with a Amazon Bedrock agent, the agent no longer maintains the conversation history. Conversation history is used to both resume an interaction and to augment responses with context from the conversation. To change this default length of time, enter a number in the Session timeout field and choose a unit of time.
+    - **Idle session timeout** – By default, if a user hasn't responded for 30 minutes in a session with a Amazon Bedrock agent, the agent no longer maintains the conversation history. Conversation history is used to both resume an interaction and to augment responses with context from the conversation. To change this default length of time, enter a number in the Session timeout field and choose a unit of time.
 
-For the IAM permissions section, for Agent resource role, choose a service role. To let Amazon Bedrock create the service role on your behalf, choose Create and use a new service role. To use a custom role that you created previously, choose Use an existing service role.
+  - For the **IAM permissions** section, for **Agent resource role**, choose a [service role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html#iam-term-service-role). To let Amazon Bedrock create the create a service role on your behalf, choose **Create and use a new service role**. To use a [custom role](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-permissions.html) that you created previously, choose **Use an existing service role**.
 
-    Note
+    **Note**: The service role that Amazon Bedrock creates for you doesn't include permissions for features that are in preview. To use these features, [attach the correct permissions to the service role](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-permissions.html).
 
-    The service role that Amazon Bedrock creates for you doesn't include permissions for features that are in preview. To use these features, attach the correct permissions to the service role.
+    - (Optional) By default, AWS encrypts agent resources with an AWS managed key. To encrypt your agent with your own customer managed key, for the **KMS key selection section**, select **Customize encryption settings (advanced)**. To create a new key, select **Create an AWS KMS key** and then refresh this window. To use an existing key, select a key for **Choose an AWS KMS key**.
 
-    (Optional) By default, AWS encrypts agent resources with an AWS managed key. To encrypt your agent with your own customer managed key, for the KMS key selection section, select Customize encryption settings (advanced). To create a new key, select Create an AWS KMS key and then refresh this window. To use an existing key, select a key for Choose an AWS KMS key.
+    - (Optional) To associate tags with this agent, for the **Tags – optional** section, choose **Add new tag** and provide a key-value pair.
 
-    (Optional) To associate tags with this agent, for the Tags – optional section, choose Add new tag and provide a key-value pair.
+    - When you are done setting up the agent configuration, select **Next**.
 
-    When you are done setting up the agent configuration, select Next.
+3. In the **Action groups** section, you can choose **Add** to add action groups to your agent. For more information on setting up action groups, see [Use action groups to define actions for your agent to perform](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-action-create.html). To learn how to add action groups to your agent, see [Add an action group to your agent in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-action-add.html).
 
-In the Action groups section, you can choose Add to add action groups to your agent. For more information on setting up action groups, see Use action groups to define actions for your agent to perform. To learn how to add action groups to your agent, see Add an action group to your agent in Amazon Bedrock.
+4. In the **Knowledge bases** section, you can choose **Add** to associate knowledge groups with your agent. For more information on setting up knowledge bases, see [Retrieve data and generate AI responses with knowledge bases](https://docs.aws.amazon.com/bedrock/latest/userguide/knowledge-base.html). To learn how to associate knowledge bases with your agent, see [Augment response generation for your agent with knowledge base](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-kb-add.html).
 
-In the Knowledge bases section, you can choose Add to associate knowledge groups with your agent. For more information on setting up knowledge bases, see Retrieve data and generate AI responses with knowledge bases. To learn how to associate knowledge bases with your agent, see Augment response generation for your agent with knowledge base.
+5. In the **Guardrails details** section, you can choose **Edit** to associate a guardrail with your agent to block and filter out harmful content. Select a guardrail you want to use from the drop down menu under **Select guardrail** and then choose the version to use under **Guardrail version**. You can select **View** to see your Guardrail settings. For more information, see [Stop harmful content in models using Amazon Bedrock Guardrails](https://docs.aws.amazon.com/bedrock/latest/userguide/guardrails.html).
 
-In the Guardrails details section, you can choose Edit to associate a guardrail with your agent to block and filter out harmful content. Select a guardrail you want to use from the drop down menu under Select guardrail and then choose the version to use under Guardrail version. You can select View to see your Guardrail settings. For more information, see Stop harmful content in models using Amazon Bedrock Guardrails.
+6. In the **Advanced prompts** section, you can choose **Edit** to customize the prompts that are sent to the FM by your agent in each step of orchestration. For more information about the prompt templates that you can use for customization, see [Enhance agent's accuracy using advanced prompt templates in Amazon Bedrock](https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts.html). To learn how to configure advanced prompts, see [Advanced prompt templates](https://docs.aws.amazon.com/bedrock/latest/userguide/advanced-prompts-templates.html).
 
-In the Advanced prompts section, you can choose Edit to customize the prompts that are sent to the FM by your agent in each step of orchestration. For more information about the prompt templates that you can use for customization, see Enhance agent's accuracy using advanced prompt templates in Amazon Bedrock. To learn how to configure advanced prompts, see Advanced prompt templates.
+7. When you finish configuring your agent, select one of the following options:
 
-When you finish configuring your agent, select one of the following options:
+    - To stay in the **Agent builder**, choose **Save**. You can then Prepare the agent in order to test it with your updated configurations in the test window. To learn how to test your agent, see [Test and troubleshoot agent behavior](https://docs.aws.amazon.com/bedrock/latest/userguide/agents-test.html).
 
-    To stay in the Agent builder, choose Save. You can then Prepare the agent in order to test it with your updated configurations in the test window. To learn how to test your agent, see Test and troubleshoot agent behavior.
-
-    To return to the Agent Details page, choose Save and exit.
+    - To return to the **Agent Details** page, choose **Save and exit**.
