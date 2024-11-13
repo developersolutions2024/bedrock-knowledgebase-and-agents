@@ -213,7 +213,7 @@ To learn how to create an agent, select the tab corresponding to your method of 
 
      By default, models optimized for agents are shown. To see all models supported by Amazon Bedrock Agents, clear **Bedrock Agents optimized**.
 
-     ![bedrock image](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/agents-optimized-model-selection.png)
+     ![bedrock image](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/raw/main/agents-optimized-model-selection.png)
 
 
 ## How to create an action group
