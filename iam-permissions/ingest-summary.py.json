@@ -1,0 +1,38 @@
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "s3:GetObject",
+                "s3:PutObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::your-input-bucket-name/*",
+                "arn:aws:s3:::your-output-bucket-name/*"
+            ]
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "bedrock:InvokeModel"
+            ],
+            "Resource": "arn:aws:bedrock:your-region::foundation-model/your-model-id"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "comprehend:DetectEntities"
+            ],
+            "Resource": "arn:aws:comprehend:*:your-account-id:entity-recognizer-endpoint/*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "logs:CreateLogGroup",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": "arn:aws:logs:*:*:*"
+        }
+    ]
+}
