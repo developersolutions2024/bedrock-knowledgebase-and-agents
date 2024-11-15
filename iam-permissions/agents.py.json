@@ -6,7 +6,7 @@
             "Action": [
                 "bedrock:InvokeAgent"
             ],
-            "Resource": "arn:aws:bedrock:*:123456789012:agent-alias/*/*"
+            "Resource": "arn:aws:bedrock:*:your-accound-id:agent-alias/*/*"
         },
         {
             "Effect": "Allow",
