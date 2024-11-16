@@ -1,7 +1,7 @@
 # REST endpoints that correspond to each GET and POST. Detailed, step-by-step guide on how to set this up in API Gateway:
 
 1. Create a new REST API in API Gateway:
-   - Go to AWS Management Console > [API Gateway](https://console.aws.amazon.com/apigateway?p=pm&c=sm&z=1)
+   - Go to [API Gateway](https://console.aws.amazon.com/apigateway?p=pm&c=sm&z=1) in the AWS Management Console
    - Choose **REST API** and click **Build**
    - Select **New API** and fill in the details:
       - API name: *DocumentProcessingAPI*
