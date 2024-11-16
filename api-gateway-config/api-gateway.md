@@ -14,20 +14,18 @@
       - Select the root resource ("/").
       - Choose **Actions** > **Create Resource**.
       - Resource Name: **fetch-response**
-      - Resource Path: **/fetch-response**
       - Enable API Gateway **CORS**
       - Click **Create Resource**.
 
-3. Create **POST** method for "/fetch-response":
-   a. With "/fetch-response" selected, choose "Actions" > "Create Method".
-   b. Select "POST" from the dropdown.
-   c. Click the checkmark to confirm.
-   d. Integration type: Lambda Function
-   e. Use Lambda Proxy integration: Yes
-   f. Lambda Region: Select your region
-   g. Lambda Function: document-processing-lambda-function
-   h. Click "Save".
-   i. When prompted to add permission to Lambda function, click "OK".
+3. Create **POST** method for **/fetch-response**:
+   - With **/fetch-response**, click **Create Method**.
+   - Select **POST** from the dropdown.
+   - Click the checkmark to confirm.
+   - Integration type: **Lambda Function**
+   - Enable **Lambda Proxy integration**
+   - Lambda Region: *Select your region*
+   - Under Lambda Function: select the arn of the lambda function (*agent*)
+   - Click **Create method**.
 
    2.3. Create "/agent-fetch-response" resource:
    (Follow the same steps as 2.1, but use "agent-fetch-response" for the name and path)
