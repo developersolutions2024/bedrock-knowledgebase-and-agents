@@ -73,15 +73,14 @@
 
 In the case of your Lambda function, the primary benefit of using a request model is to ensure that the input data (the `prompt` in this case) is consistent and meets the expected format. This can help improve the reliability and maintainability of your application, as it reduces the chances of invalid input being passed to your Lambda function.
 
-   b. Under **API:your-api-name**, click **Models**
-   c. Create a model for the request (if needed) in "Models" section of API Gateway.
-   d. Go to the method's "Integration Request".
-   e. Under "Mapping Templates", add a mapping template for "application/json".
-   f. Go to the method's "Method Response".
-   g. Add appropriate response models for different status codes.
-
-   Example for "/fetch-response" POST:
-   - Request model:
+### Now we are going create method request and response models for all API requests and responses
+   
+8. Let us create a model for the **Method request**
+   - Under **API:your-api-name**, click **Models**
+   - Click **Create a model**.
+   - Give the model a name, for example `FetchResponseRequest`.
+   - Under **Content type**, add **application/json**.
+   - Under **Model schema** add the following JSON schema
      ```json
      {
        "$schema": "http://json-schema.org/draft-04/schema#",
@@ -93,7 +92,13 @@ In the case of your Lambda function, the primary benefit of using a request mode
        "required": ["prompt"]
      }
      ```
-   - Response model:
+
+9. Let us now create a model for the **Method response**
+   - Under **API:your-api-name**, click **Models**
+   - Click **Create a model**.
+   - Give the model a name, for example `FetchResponseResponse`.
+   - Under **Content type**, add **application/json**.
+   - Under **Model schema** add the following JSON schema
      ```json
      {
        "$schema": "http://json-schema.org/draft-04/schema#",
@@ -115,29 +120,34 @@ In the case of your Lambda function, the primary benefit of using a request mode
        }
      }
      ```
+10. Now we can add the model to the **POST** method and test the `agent` lambda function
+   - Click on the **POST** method under the **/fetch-response** resource
+   - Select **Method request** and click **Edit**
+   - Scroll down to **Request body** and expand it
+   - Make sure **Content type** is set to **application/json**
+   - Under **Model** select **FetchResponseRequest** and click **Save**
+   - Now select **Method response** and click **Edit**
+   - Scroll down to **Request body** and expand it
+   - Again, make sure **Content type** is set to **application/json**
+   - Under **Model** select **FetchResponseResponse** and click **Save**
 
-4. Set up request validators:
-   a. Go to "Models" in the API Gateway console.
-   b. Create request validators for each endpoint to ensure the incoming requests match the expected schema.
+Let us test the lambda function
+      - Still under the **/fetch-response** POST method selected, select **Test**
+      - Under **Request body**, let us pass a prompt to get a response. Add the following:
+      ```json
+      {
+         "prompt": "Who is Antonio Guterres?"
+      }
+      ```
+      - Click **Test**
+      - You should be able to see a response now about Antonio Guterres
 
-5. Configure CORS:
-   For each resource:
-   a. Select the resource.
-   b. Choose "Actions" > "Enable CORS".
-   c. Configure as needed and click "Enable CORS and replace existing CORS headers".
 
-6. Set up usage plans and API keys (if needed):
-   a. Go to "Usage Plans" in the API Gateway console.
-   b. Create a new usage plan.
-   c. Associate API stages with the usage plan.
-   d. Create and associate API keys with the usage plan.
-
-7. Deploy the API:
-   a. Select the API.
-   b. Choose "Actions" > "Deploy API".
-   c. Select a stage (e.g., "prod") or create a new one.
-   d. Enter a description for the deployment.
-   e. Click "Deploy".
-
-8. Get the invoke URL:
-   After deployment, you'll see the invoke URL. This is the base URL for your API endpoints.
+11. Deploy the API:
+   - Click **Depploy API**.
+   - Under **Stage**, select an existing stage or **New stage**
+   - If **New stage** is selected, then give the stage a name, for example `Dev`. You can always created a stage before deployment by clicking on **Stages** under **Resources** in the sidebar. 
+   - Even though it is optional, it is always good to give your stage a description
+   - Click **Deploy**
+   - You will be provided with an **Invoke URL** which can find under **Stages** in the sidebar. 
+   
