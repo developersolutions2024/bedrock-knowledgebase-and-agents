@@ -40,8 +40,8 @@
 
 6. Configure **request** and **response** models:
    For each method, you'll need to set up request and response models:
+======================================
 
-   - Go to the method's **Method Request**.
   ### What is a model for?
   1. **Request Validation**:
    - The request model, as defined in the JSON schema you provide, is used to validate the incoming request body.
@@ -60,6 +60,7 @@
 
 In the case of your Lambda function, the primary benefit of using a request model is to ensure that the input data (the `prompt` in this case) is consistent and meets the expected format. This can help improve the reliability and maintainability of your application, as it reduces the chances of invalid input being passed to your Lambda function.
 
+======================================
 ## Now we are going create method request and response models for resources
 
 ### 7. Starting with /fetch-response
