@@ -155,7 +155,7 @@ In the case of your Lambda function, the primary benefit of using a request mode
             "isRTL": { "type": "boolean" }
           }
         }
-     ```
+        ```
 
 ## 9. Models for /translate-ui-content
    - Let us create a model for the **Method request**
@@ -198,25 +198,25 @@ In the case of your Lambda function, the primary benefit of using a request mode
       - Under **Model schema** add the following JSON schema
         ```json
         {
-       "$schema": "http://json-schema.org/draft-04/schema#",
-       "title": "FetchUITranslatorResponseResponse",
-       "type": "object",
-       "properties": {
-         "translatedContent": {
-           "type": "object",
-           "properties": {
-             "text": {
-               "type": "string"
-             }
-           }
-         },
-         "isRTL": {
-           "type": "boolean"
-         }
-       },
-       "required": ["translatedContent", "isRTL"]
-     }
-     ```
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "title": "FetchUITranslatorResponseResponse",
+          "type": "object",
+          "properties": {
+            "translatedContent": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string"
+                }
+              }
+            },
+            "isRTL": {
+              "type": "boolean"
+            }
+          },
+          "required": ["translatedContent", "isRTL"]
+        }
+        ```
 
 10. Now we can add the model to the **POST** method and test the `agent` lambda function
    - Click on the **POST** method under the **/fetch-response** resource
