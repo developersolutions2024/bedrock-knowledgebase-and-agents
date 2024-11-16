@@ -133,7 +133,7 @@ In the case of your Lambda function, the primary benefit of using a request mode
       - Under **API:your-api-name**, click **Models**
       - Click **Create a model**.
       - Give the model a name, for example `FetchAgentResponseResponse`.
-      - Under **Content type**, add **application/json**.
+      - Under **Content type**, add `application/json`.
       - Under **Model schema** add the following JSON schema
         ```json
         {
@@ -141,19 +141,25 @@ In the case of your Lambda function, the primary benefit of using a request mode
           "title": "FetchAgentResponseResponse",
           "type": "object",
           "properties": {
-            "generatedText": { "type": "string" },
-            "sourceInfo": {
+            "completion": {
+              "type": "string"
+            },
+            "traces": {
               "type": "array",
               "items": {
                 "type": "object",
                 "properties": {
-                  "source": { "type": "string" },
-                  "fileKey": { "type": "string" }
+                  "message": {
+                    "type": "string"
+                  }
                 }
               }
             },
-            "isRTL": { "type": "boolean" }
-          }
+            "source": {
+              "type": "string"
+            }
+          },
+          "required": ["completion", "traces", "source"]
         }
         ```
 
@@ -162,7 +168,7 @@ In the case of your Lambda function, the primary benefit of using a request mode
       - Under **API:your-api-name**, click **Models**
       - Click **Create a model**.
       - Give the model a name, for example `FetchUITranslatorResponseRequest`.
-      - Under **Content type**, add **application/json**.
+      - Under **Content type**, add `application/json`.
       - Under **Model schema** add the following JSON schema
         ```json
         {
@@ -194,7 +200,7 @@ In the case of your Lambda function, the primary benefit of using a request mode
       - Under **API:your-api-name**, click **Models**
       - Click **Create a model**.
       - Give the model a name, for example `FetchUITranslatorResponseResponse`.
-      - Under **Content type**, add **application/json**.
+      - Under **Content type**, add `application/json`.
       - Under **Model schema** add the following JSON schema
         ```json
         {
@@ -218,19 +224,42 @@ In the case of your Lambda function, the primary benefit of using a request mode
         }
         ```
 
-10. Now we can add the model to the **POST** method and test the `agent` lambda function
+10. Now we can add the model to the **POST** method for **/fetch-response**
    - Click on the **POST** method under the **/fetch-response** resource
    - Select **Method request** and click **Edit**
    - Scroll down to **Request body** and expand it
    - Make sure **Content type** is set to **application/json**
-   - Under **Model** select **FetchResponseRequest** and click **Save**
+   - Under **Model** select ``FetchResponseRequest`` and click **Save**
    - Now select **Method response** and click **Edit**
    - Scroll down to **Request body** and expand it
    - Again, make sure **Content type** is set to **application/json**
    - Under **Model** select **FetchResponseResponse** and click **Save**
 
-Let us test the lambda function
-   - Still under the **/fetch-response** POST method selected, select **Test**
+11. Now we can add the model to the **POST** method for **/agent-fetch-response**
+   - Click on the **POST** method under the **/agent-fetch-response** resource
+   - Select **Method request** and click **Edit**
+   - Scroll down to **Request body** and expand it
+   - Make sure **Content type** is set to `application/json``     
+   - Under **Model** select `FetchAgentResponseRequest` and click **Save**
+   - Now select **Method response** and click **Edit**
+   - Scroll down to **Request body** and expand it
+   - Again, make sure **Content type** is set to **application/json**
+   - Under **Model** select `FetchAgentResponseResponse` and click **Save**
+
+11. Now we can add the model to the **POST** method for **/translate-ui-content**
+   - Click on the **POST** method under the **/translate-ui-content** resource
+   - Select **Method request** and click **Edit**
+   - Scroll down to **Request body** and expand it
+   - Make sure **Content type** is set to `application/json``     
+   - Under **Model** select `TranslationRequest` and click **Save**
+   - Now select **Method response** and click **Edit**
+   - Scroll down to **Request body** and expand it
+   - Again, make sure **Content type** is set to `application/json`
+   - Under **Model** select `TranslationResponse` and click **Save*
+
+Let us test the lambda functions
+ ### no-agent.py
+   - Under the **/fetch-response** **POST** method selected, select **Test**
    - Under **Request body**, let us pass a prompt to get a response. Add the following:
       ```json
       {
@@ -240,6 +269,31 @@ Let us test the lambda function
    - Click **Test**
    - You should be able to see a response now about Antonio Guterres
 
+### agent.py
+   - Under the **/agent-fetch-response** **POST** method selected, select **Test**
+   - Under **Request body**, let us pass a prompt to get a response. Add the following:
+      ```json
+      {
+         "prompt": "Who is Antonio Guterres?"
+      }
+      ```
+   - Click **Test**
+   - You should be able to see a response now about Antonio Guterres
+
+### uiTranslator.py
+   - Under the **/translate-ui-content** **POST** method selected, select **Test**
+   - Under **Request body**, let us pass the content to be translated to get a response. Add the following:      
+      ```json
+      {
+        "sourceLanguage": "en",
+        "targetLanguage": "es",
+        "content": {
+          "text": "Hello, how are you?"
+        }
+      }
+      ```
+   - Click **Test**
+   - You should be able to see your test translated
 
 11. Deploy the API:
    - Click **Depploy API**.
