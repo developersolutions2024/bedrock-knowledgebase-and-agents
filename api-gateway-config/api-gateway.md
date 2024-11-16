@@ -37,21 +37,8 @@
    - Create **POST** method for **/translate-ui-content**:
    *Follow the same steps as section 3, but use **uiTranslator** for the Lambda function*
 
-6. Create **prompt-answers** resource:
-   *Follow the same steps as section 2, but use **prompt-answers** as the resource name*
 
-7. Create **GET** method for **/prompt-answers**:
-   a. With "/prompt-answers" selected, choose "Actions" > "Create Method".
-   b. Select "GET" from the dropdown.
-   c. Click the checkmark to confirm.
-   d. Integration type: Lambda Function
-   e. Use Lambda Proxy integration: Yes
-   f. Lambda Region: Select your region
-   g. Lambda Function: (create a new Lambda function for this, e.g., "get-prompt-answers")
-   h. Click "Save".
-   i. When prompted to add permission to Lambda function, click "OK".
-
-7. Configure **request** and **response** models:
+6. Configure **request** and **response** models:
    For each method, you'll need to set up request and response models:
 
    - Go to the method's **Method Request**.
@@ -75,7 +62,7 @@ In the case of your Lambda function, the primary benefit of using a request mode
 
 ## Now we are going create method request and response models for resources
 
-### 8. Staring with /fetch-response
+### 7. Starting with /fetch-response
    
    - Let us create a model for the **Method request**
       - Under **API:your-api-name**, click **Models**
@@ -95,33 +82,143 @@ In the case of your Lambda function, the primary benefit of using a request mode
         }
         ```
 
-9. Let us now create a model for the **Method response**
-   - Under **API:your-api-name**, click **Models**
-   - Click **Create a model**.
-   - Give the model a name, for example `FetchResponseResponse`.
-   - Under **Content type**, add **application/json**.
-   - Under **Model schema** add the following JSON schema
-     ```json
-     {
+   - Let us now create a model for the **Method response**
+      - Under **API:your-api-name**, click **Models**
+      - Click **Create a model**.
+      - Give the model a name, for example `FetchResponseResponse`.
+      - Under **Content type**, add **application/json**.
+      - Under **Model schema** add the following JSON schema
+        ```json
+        {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "title": "FetchResponseResponse",
+          "type": "object",
+          "properties": {
+            "generatedText": { "type": "string" },
+            "sourceInfo": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "source": { "type": "string" },
+                  "fileKey": { "type": "string" }
+                }
+              }
+            },
+            "isRTL": { "type": "boolean" }
+          }
+        }
+     ```
+
+
+## 8. Models for /agent-fetch-response
+ - Let us create a model for the **Method request**
+      - Under **API:your-api-name**, click **Models**
+      - Click **Create a model**.
+      - Give the model a name, for example `FetchAgentResponseRequest`.
+      - Under **Content type**, add **application/json**.
+      - Under **Model schema** add the following JSON schema
+        ```json
+        {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "title": "FetchAgentResponseRequest",
+          "type": "object",
+          "properties": {
+            "prompt": { "type": "string" }
+          },
+          "required": ["prompt"]
+        }
+        ```
+
+   - Let us now create a model for the **Method response**
+      - Under **API:your-api-name**, click **Models**
+      - Click **Create a model**.
+      - Give the model a name, for example `FetchAgentResponseResponse`.
+      - Under **Content type**, add **application/json**.
+      - Under **Model schema** add the following JSON schema
+        ```json
+        {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "title": "FetchAgentResponseResponse",
+          "type": "object",
+          "properties": {
+            "generatedText": { "type": "string" },
+            "sourceInfo": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "source": { "type": "string" },
+                  "fileKey": { "type": "string" }
+                }
+              }
+            },
+            "isRTL": { "type": "boolean" }
+          }
+        }
+     ```
+
+## 9. Models for /translate-ui-content
+- Let us create a model for the **Method request**
+      - Under **API:your-api-name**, click **Models**
+      - Click **Create a model**.
+      - Give the model a name, for example `FetchUITranslatorResponseRequest`.
+      - Under **Content type**, add **application/json**.
+      - Under **Model schema** add the following JSON schema
+        ```json
+        {
        "$schema": "http://json-schema.org/draft-04/schema#",
-       "title": "FetchResponseResponse",
+       "title": "FetchUITranslatorResponseRequest",
        "type": "object",
        "properties": {
-         "generatedText": { "type": "string" },
-         "sourceInfo": {
-           "type": "array",
-           "items": {
-             "type": "object",
-             "properties": {
-               "source": { "type": "string" },
-               "fileKey": { "type": "string" }
+         "sourceLanguage": {
+           "type": "string"
+         },
+         "targetLanguage": {
+           "type": "string"
+         },
+         "content": {
+           "type": "object",
+           "properties": {
+             "text": {
+               "type": "string"
+             }
+           },
+           "required": ["text"]
+         }
+       },
+       "required": ["sourceLanguage", "targetLanguage", "content"]
+     }
+        ```
+
+   - Let us now create a model for the **Method response**
+      - Under **API:your-api-name**, click **Models**
+      - Click **Create a model**.
+      - Give the model a name, for example `FetchUITranslatorResponseResponse`.
+      - Under **Content type**, add **application/json**.
+      - Under **Model schema** add the following JSON schema
+        ```json
+        {
+       "$schema": "http://json-schema.org/draft-04/schema#",
+       "title": "FetchUITranslatorResponseResponse",
+       "type": "object",
+       "properties": {
+         "translatedContent": {
+           "type": "object",
+           "properties": {
+             "text": {
+               "type": "string"
              }
            }
          },
-         "isRTL": { "type": "boolean" }
-       }
+         "isRTL": {
+           "type": "boolean"
+         }
+       },
+       "required": ["translatedContent", "isRTL"]
      }
      ```
+
 10. Now we can add the model to the **POST** method and test the `agent` lambda function
    - Click on the **POST** method under the **/fetch-response** resource
    - Select **Method request** and click **Edit**
