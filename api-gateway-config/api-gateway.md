@@ -73,25 +73,27 @@
 
 In the case of your Lambda function, the primary benefit of using a request model is to ensure that the input data (the `prompt` in this case) is consistent and meets the expected format. This can help improve the reliability and maintainability of your application, as it reduces the chances of invalid input being passed to your Lambda function.
 
-### Now we are going create method request and response models for all API requests and responses
+## Now we are going create method request and response models for resources
+
+### 8. Staring with /fetch-response
    
-8. Let us create a model for the **Method request**
-   - Under **API:your-api-name**, click **Models**
-   - Click **Create a model**.
-   - Give the model a name, for example `FetchResponseRequest`.
-   - Under **Content type**, add **application/json**.
-   - Under **Model schema** add the following JSON schema
-     ```json
-     {
-       "$schema": "http://json-schema.org/draft-04/schema#",
-       "title": "FetchResponseRequest",
-       "type": "object",
-       "properties": {
-         "prompt": { "type": "string" }
-       },
-       "required": ["prompt"]
-     }
-     ```
+   - Let us create a model for the **Method request**
+      - Under **API:your-api-name**, click **Models**
+      - Click **Create a model**.
+      - Give the model a name, for example `FetchResponseRequest`.
+      - Under **Content type**, add **application/json**.
+      - Under **Model schema** add the following JSON schema
+        ```json
+        {
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "title": "FetchResponseRequest",
+          "type": "object",
+          "properties": {
+            "prompt": { "type": "string" }
+          },
+          "required": ["prompt"]
+        }
+        ```
 
 9. Let us now create a model for the **Method response**
    - Under **API:your-api-name**, click **Models**
