@@ -1,5 +1,4 @@
-# REST endpoints that correspond to each GET and POST. 
-## Detailed, step-by-step guide on how to set this up in API Gateway:
+# Step-by-step guide on how to set this up in API Gateway REST endpoints (POST & GET):
 
 1. Create a new REST API in API Gateway:
    - Go to [API Gateway](https://console.aws.amazon.com/apigateway?p=pm&c=sm&z=1) in the AWS Management Console
