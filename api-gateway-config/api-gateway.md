@@ -293,7 +293,7 @@ Let us test the lambda functions
       }
       ```
    - Click **Test**
-   - You should be able to see your test translated
+   - You should be able to see your translated content
 
 11. Deploy the API:
    - Click **Depploy API**.
