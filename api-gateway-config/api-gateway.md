@@ -6,201 +6,125 @@
    - Select **New API** and fill in the details:
       - API name: *DocumentProcessingAPI*
       - Description: *REST API for document processing and UI translation*
+      - API Endpoint type: **Regional**
    - Click **Create API**
 
-2. Set up the **/fetch-response** endpoint:
-   a. In the left sidebar, click **Resources**
-   b. Click "Actions" > "Create Resource"
-   c. Resource Name: "fetch-response"
-   d. Resource Path: "/fetch-response"
-   e. Click "Create Resource"
-   f. With the new resource selected, click "Actions" > "Create Method"
-   g. Choose "POST" from the dropdown and click the checkmark
-   h. Set up the integration:
-      - Integration type: **Lambda Function**
-      - Use Lambda Proxy integration: **Check this box**
-      - Lambda Function: **no-agent**
-      - Click "Save"
-   i. Click on **Method Request** and set up:
-      - API Key Required: **true**
-      - Request Validator: **Validate body**
-      - Request body: **application/json**
-      - Model schema:
-        ```
-        {
-          "$schema": "http://json-schema.org/draft-04/schema#",
-          "type": "object",
-          "properties": {
-            "prompt": {"type": "string"}
-          },
-          "required": ["prompt"]
-        }
-        ```
-   j. Click on "Integration Response" and set up:
-      - Content type: application/json
-      - Model schema:
-        ```json
-        {
-          "$schema": "http://json-schema.org/draft-04/schema#",
-          "type": "object",
-          "properties": {
-            "generatedText": {"type": "string"},
-            "sourceInfo": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "properties": {
-                  "source": {"type": "string"},
-                  "fileKey": {"type": "string"}
-                },
-                "required": ["source", "fileKey"]
-              }
-            },
-            "isRTL": {"type": "boolean"}
-          }
-        }
-        ```
+2. Set up resources and methods:
+   - Create **/fetch-response** resource:
+      - Select the root resource ("/").
+      - Choose **Actions** > **Create Resource**.
+      - Resource Name: **fetch-response**
+      - Resource Path: **/fetch-response**
+      - Enable API Gateway **CORS**
+      - Click **Create Resource**.
 
-3. Set up the /agent-fetch-response endpoint:
-   Follow the same steps as for "/fetch-response", but:
-   a. Resource Name: "agent-fetch-response"
-   b. Resource Path: "/agent-fetch-response"
-   c. Lambda Function: agent-test
-   d. Use the following response model:
+3. Create **POST** method for "/fetch-response":
+   a. With "/fetch-response" selected, choose "Actions" > "Create Method".
+   b. Select "POST" from the dropdown.
+   c. Click the checkmark to confirm.
+   d. Integration type: Lambda Function
+   e. Use Lambda Proxy integration: Yes
+   f. Lambda Region: Select your region
+   g. Lambda Function: document-processing-lambda-function
+   h. Click "Save".
+   i. When prompted to add permission to Lambda function, click "OK".
+
+   2.3. Create "/agent-fetch-response" resource:
+   (Follow the same steps as 2.1, but use "agent-fetch-response" for the name and path)
+
+   2.4. Create POST method for "/agent-fetch-response":
+   (Follow the same steps as 2.2, but use "agent-test" for the Lambda function)
+
+   2.5. Create "/translate-ui-content" resource:
+   (Follow the same steps as 2.1, but use "translate-ui-content" for the name and path)
+
+   2.6. Create POST method for "/translate-ui-content":
+   (Follow the same steps as 2.2, but use "uiTranslator" for the Lambda function)
+
+   2.7. Create "/prompt-answers" resource:
+   (Follow the same steps as 2.1, but use "prompt-answers" for the name and path)
+
+   2.8. Create GET method for "/prompt-answers":
+   a. With "/prompt-answers" selected, choose "Actions" > "Create Method".
+   b. Select "GET" from the dropdown.
+   c. Click the checkmark to confirm.
+   d. Integration type: Lambda Function
+   e. Use Lambda Proxy integration: Yes
+   f. Lambda Region: Select your region
+   g. Lambda Function: (create a new Lambda function for this, e.g., "get-prompt-answers")
+   h. Click "Save".
+   i. When prompted to add permission to Lambda function, click "OK".
+
+3. Configure request and response models:
+
+   For each method, you'll need to set up request and response models:
+
+   a. Go to the method's "Method Request".
+   b. Under "Request Body", set "Content-Type" to "application/json".
+   c. Create a model for the request (if needed) in "Models" section of API Gateway.
+   d. Go to the method's "Integration Request".
+   e. Under "Mapping Templates", add a mapping template for "application/json".
+   f. Go to the method's "Method Response".
+   g. Add appropriate response models for different status codes.
+
+   Example for "/fetch-response" POST:
+   - Request model:
      ```json
      {
        "$schema": "http://json-schema.org/draft-04/schema#",
+       "title": "FetchResponseRequest",
        "type": "object",
        "properties": {
-         "completion": {"type": "string"},
-         "traces": {
+         "prompt": { "type": "string" }
+       },
+       "required": ["prompt"]
+     }
+     ```
+   - Response model:
+     ```json
+     {
+       "$schema": "http://json-schema.org/draft-04/schema#",
+       "title": "FetchResponseResponse",
+       "type": "object",
+       "properties": {
+         "generatedText": { "type": "string" },
+         "sourceInfo": {
            "type": "array",
            "items": {
              "type": "object",
              "properties": {
-               "agentAliasId": {"type": "string"},
-               "agentId": {"type": "string"},
-               "agentVersion": {"type": "string"},
-               "sessionId": {"type": "string"},
-               "trace": {"type": "object"}
+               "source": { "type": "string" },
+               "fileKey": { "type": "string" }
              }
            }
          },
-         "isRTL": {"type": "boolean"}
+         "isRTL": { "type": "boolean" }
        }
      }
      ```
 
-4. Set up the /translate-ui-content endpoint:
-   a. Create a new resource named "translate-ui-content"
-   b. Add a POST method and integrate with the "uiTranslator" Lambda function
-   c. Set up the request model:
-     ```json
-     {
-       "$schema": "http://json-schema.org/draft-04/schema#",
-       "type": "object",
-       "properties": {
-         "sourceLanguage": {"type": "string"},
-         "targetLanguage": {"type": "string"},
-         "content": {
-           "type": "object",
-           "properties": {
-             "buttonLabels": {"$ref": "#/definitions/ButtonLabelsInput"},
-             "messages": {"$ref": "#/definitions/MessagesInput"},
-             "information": {"$ref": "#/definitions/InformationInput"},
-             "sideNavigation": {"$ref": "#/definitions/SideNavigationInput"},
-             "languages": {"$ref": "#/definitions/LanguagesInput"},
-             "header": {"$ref": "#/definitions/HeaderInput"},
-             "dynamicMessages": {"$ref": "#/definitions/DynamicMessagesInput"}
-           }
-         }
-       },
-       "required": ["sourceLanguage", "targetLanguage", "content"],
-       "definitions": {
-         "ButtonLabelsInput": {
-           "type": "object",
-           "properties": {
-             "submit": {"type": "string"},
-             "reset": {"type": "string"},
-             "getStarted": {"type": "string"},
-             "learnMore": {"type": "string"},
-             "learnMoreAbout": {"type": "string"}
-           }
-         },
-         "MessagesInput": {
-           "type": "object",
-           "properties": {
-             "loading": {"type": "string"},
-             "noResponse": {"type": "string"},
-             "userInputBoxPlaceHolder": {"type": "string"},
-             "userInputRequired": {"type": "string"},
-             "chatHeader": {"type": "string"},
-             "chatModel": {"type": "string"},
-             "analyzeResponse": {"type": "string"},
-             "responseInsights": {"type": "string"},
-             "sources": {"type": "string"},
-             "dynamicMessages": {"$ref": "#/definitions/SummaryInput"}
-           }
-         },
-         "InformationInput": {
-           "type": "object",
-           "properties": {
-             "overviewHeader": {"type": "string"},
-             "definitionsHeader": {"type": "string"},
-             "benefitsHeader": {"type": "string"},
-             "overview": {"type": "string"},
-             "definitions": {"$ref": "#/definitions/DefinitionsInput"},
-             "benefits": {"$ref": "#/definitions/BenefitsInput"},
-             "languages": {"$ref": "#/definitions/LanguagesInput"}
-           }
-         },
-         "DefinitionsInput": {
-           "type": "object",
-           "properties": {
-             "rag": {"type": "string"},
-             "langChain": {"type": "string"},
-             "knowledgeBase": {"type": "string"},
-             "embeddingModel": {"type": "string"}
-           }
-         },
-         "BenefitsInput": {
-           "type": "object",
-           "properties": {
-             "one": {"type": "string"},
-             "two": {"type": "string"}
-           }
-         },
-         "LanguagesInput": {
-           "type": "object",
-           "properties": {
-             "Arabic": {"type": "string"},
-             "Chinese": {"type": "string"},
-             "English": {"type": "string"},
-             "French": {"type": "string"},
-             "Russian": {"type": "string"},
-             "Spanish": {"type": "string"}
-           }
-         },
-         "HeaderInput": {
-           "type": "object",
-           "properties": {
-             "demo": {"type": "string"},
-             "preparedBy": {"type": "string"}
-           }
-         },
-         "SideNavigationInput": {
-           "type": "object",
-           "properties": {
-             "header": {"type": "string"},
-             "home": {"type": "string"},
-             "actions": {"type": "string"},
-             "naiveRAG": {"type": "string"},
-             "agentRAG": {"type": "string"},
-             "signOut": {"type": "string"},
-             "loggedInAs": {"type": "string"}
-           }
-         },
-         "DynamicMessagesInput": {
-           "type": "object",
-           "properties": {
-             "summary": {"$ref": "#/definitions/SummaryInput
+4. Set up request validators:
+   a. Go to "Models" in the API Gateway console.
+   b. Create request validators for each endpoint to ensure the incoming requests match the expected schema.
+
+5. Configure CORS:
+   For each resource:
+   a. Select the resource.
+   b. Choose "Actions" > "Enable CORS".
+   c. Configure as needed and click "Enable CORS and replace existing CORS headers".
+
+6. Set up usage plans and API keys (if needed):
+   a. Go to "Usage Plans" in the API Gateway console.
+   b. Create a new usage plan.
+   c. Associate API stages with the usage plan.
+   d. Create and associate API keys with the usage plan.
+
+7. Deploy the API:
+   a. Select the API.
+   b. Choose "Actions" > "Deploy API".
+   c. Select a stage (e.g., "prod") or create a new one.
+   d. Enter a description for the deployment.
+   e. Click "Deploy".
+
+8. Get the invoke URL:
+   After deployment, you'll see the invoke URL. This is the base URL for your API endpoints.
