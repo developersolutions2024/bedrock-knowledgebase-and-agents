@@ -167,28 +167,28 @@ In the case of your Lambda function, the primary benefit of using a request mode
       - Under **Model schema** add the following JSON schema
         ```json
         {
-       "$schema": "http://json-schema.org/draft-04/schema#",
-       "title": "FetchUITranslatorResponseRequest",
-       "type": "object",
-       "properties": {
-         "sourceLanguage": {
-           "type": "string"
-         },
-         "targetLanguage": {
-           "type": "string"
-         },
-         "content": {
-           "type": "object",
-           "properties": {
-             "text": {
-               "type": "string"
-             }
-           },
-           "required": ["text"]
-         }
-       },
-       "required": ["sourceLanguage", "targetLanguage", "content"]
-     }
+          "$schema": "http://json-schema.org/draft-04/schema#",
+          "title": "FetchUITranslatorResponseRequest",
+          "type": "object",
+          "properties": {
+            "sourceLanguage": {
+              "type": "string"
+            },
+            "targetLanguage": {
+              "type": "string"
+            },
+            "content": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string"
+                }
+              },
+              "required": ["text"]
+            }
+          },
+          "required": ["sourceLanguage", "targetLanguage", "content"]
+        }
         ```
 
    - Let us now create a model for the **Method response**
