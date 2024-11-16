@@ -132,15 +132,15 @@ In the case of your Lambda function, the primary benefit of using a request mode
    - Under **Model** select **FetchResponseResponse** and click **Save**
 
 Let us test the lambda function
-      - Still under the **/fetch-response** POST method selected, select **Test**
-      - Under **Request body**, let us pass a prompt to get a response. Add the following:
+   - Still under the **/fetch-response** POST method selected, select **Test**
+   - Under **Request body**, let us pass a prompt to get a response. Add the following:
       ```json
       {
          "prompt": "Who is Antonio Guterres?"
       }
       ```
-      - Click **Test**
-      - You should be able to see a response now about Antonio Guterres
+   - Click **Test**
+   - You should be able to see a response now about Antonio Guterres
 
 
 11. Deploy the API:
