@@ -1,16 +1,15 @@
-To transform this GraphQL schema for use with API Gateway, we'll create REST endpoints that correspond to each query and mutation. Here's a detailed, step-by-step guide on how to set this up in API Gateway:
+### To transform this GraphQL schema for use with API Gateway, we'll create REST endpoints that correspond to each query and mutation. Here's a detailed, step-by-step guide on how to set this up in API Gateway:
 
 1. Create a new REST API in API Gateway:
-   a. Go to AWS Management Console > API Gateway
-   b. Click "Create API"
-   c. Choose "REST API" and click "Build"
-   d. Fill in the details:
+   a. Go to AWS Management Console > [API Gateway](https://console.aws.amazon.com/apigateway?p=pm&c=sm&z=1)
+   b. Choose **REST API** and click **Build**
+   c. Select **New API** and fill in the details:
       - API name: "DocumentProcessingAPI"
       - Description: "REST API for document processing and UI translation"
-   e. Click "Create API"
+   d. Click "Create API"
 
-2. Set up the /fetch-response endpoint:
-   a. In the left sidebar, click "Resources"
+2. Set up the **/fetch-response** endpoint:
+   a. In the left sidebar, click **Resources**
    b. Click "Actions" > "Create Resource"
    c. Resource Name: "fetch-response"
    d. Resource Path: "/fetch-response"
@@ -18,16 +17,16 @@ To transform this GraphQL schema for use with API Gateway, we'll create REST end
    f. With the new resource selected, click "Actions" > "Create Method"
    g. Choose "POST" from the dropdown and click the checkmark
    h. Set up the integration:
-      - Integration type: Lambda Function
-      - Use Lambda Proxy integration: Check this box
-      - Lambda Function: document-processing-lambda-function
+      - Integration type: **Lambda Function**
+      - Use Lambda Proxy integration: **Check this box**
+      - Lambda Function: **no-agent**
       - Click "Save"
-   i. Click on "Method Request" and set up:
-      - API Key Required: true
-      - Request Validator: Validate body
-      - Request body: application/json
+   i. Click on **Method Request** and set up:
+      - API Key Required: **true**
+      - Request Validator: **Validate body**
+      - Request body: **application/json**
       - Model schema:
-        ```json
+        ```
         {
           "$schema": "http://json-schema.org/draft-04/schema#",
           "type": "object",
