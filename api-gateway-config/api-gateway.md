@@ -158,7 +158,7 @@ In the case of your Lambda function, the primary benefit of using a request mode
      ```
 
 ## 9. Models for /translate-ui-content
-- Let us create a model for the **Method request**
+   - Let us create a model for the **Method request**
       - Under **API:your-api-name**, click **Models**
       - Click **Create a model**.
       - Give the model a name, for example `FetchUITranslatorResponseRequest`.
