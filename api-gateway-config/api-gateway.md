@@ -27,17 +27,15 @@
    - Under Lambda Function: select the arn of the lambda function (*agent*)
    - Click **Create method**.
 
-   2.3. Create "/agent-fetch-response" resource:
-   (Follow the same steps as 2.1, but use "agent-fetch-response" for the name and path)
+4. Create **/agent-fetch-response** resource:
+   Follow the same steps as section 2, but use **agent-fetch-response** as the resource name
+   - Create **POST** method for **/agent-fetch-response**:
+   Follow the same steps as section 3, but use *agent* for the Lambda function)
 
-   2.4. Create POST method for "/agent-fetch-response":
-   (Follow the same steps as 2.2, but use "agent-test" for the Lambda function)
-
-   2.5. Create "/translate-ui-content" resource:
-   (Follow the same steps as 2.1, but use "translate-ui-content" for the name and path)
-
-   2.6. Create POST method for "/translate-ui-content":
-   (Follow the same steps as 2.2, but use "uiTranslator" for the Lambda function)
+5. Create **/translate-ui-content** resource:
+   Follow the same steps as section 2, but use **translate-ui-content** fas the resource name
+   - Create **POST** method for **/translate-ui-content**:
+   Follow the same steps as section 3, but use **uiTranslator** for the Lambda function
 
    2.7. Create "/prompt-answers" resource:
    (Follow the same steps as 2.1, but use "prompt-answers" for the name and path)
