@@ -146,7 +146,7 @@ Let us test the lambda function
 11. Deploy the API:
    - Click **Depploy API**.
    - Under **Stage**, select an existing stage or **New stage**
-   - If **New stage** is selected, then give the stage a name, for example `Dev`. You can always created a stage before deployment by clicking on **Stages** under **Resources** in the sidebar. 
+   - If **New stage** is selected, then give the stage a name, for example `Dev`. You can always create a stage before deployment by clicking on **Stages** under **Resources** in the sidebar. 
    - Even though it is optional, it is always good to give your stage a description
    - Click **Deploy**
    - You will be provided with an **Invoke URL** which can find under **Stages** in the sidebar. 
