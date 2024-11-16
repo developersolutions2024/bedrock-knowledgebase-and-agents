@@ -10,14 +10,14 @@
    - Click **Create API**
 
 2. Set up resources and methods:
-   - Create **/fetch-response** resource:
+   - Create the **/fetch-response** resource:
       - Select the root resource ("/").
-      - Click**Create Resource** button above the root resouce
+      - Click **Create Resource** button above the root resouce
       - Resource Name: **fetch-response**
       - Enable API Gateway **CORS**
       - Click **Create Resource**.
 
-3. Create **POST** method for **/fetch-response**:
+3. Create a **POST** method for **/fetch-response**:
    - With **/fetch-response**, click **Create Method**.
    - Select **POST** from the dropdown.
    - Click the checkmark to confirm.
@@ -27,12 +27,12 @@
    - Under Lambda Function: select the arn of the lambda function (*agent*)
    - Click **Create method**.
 
-4. Create **/agent-fetch-response** resource:
+4. Create the **/agent-fetch-response** resource:
    *Follow the same steps as section 2, but use **agent-fetch-response** as the resource name*
    - Create **POST** method for **/agent-fetch-response**:
    *Follow the same steps as section 3, but use **agent** for the Lambda function*
 
-5. Create **/translate-ui-content** resource:
+5. Create the **/translate-ui-content** resource:
    *Follow the same steps as section 2, but use **translate-ui-content** as the resource name*
    - Create **POST** method for **/translate-ui-content**:
    *Follow the same steps as section 3, but use **uiTranslator** for the Lambda function*
