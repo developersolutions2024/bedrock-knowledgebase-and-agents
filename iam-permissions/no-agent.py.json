@@ -11,6 +11,13 @@
         {
             "Effect": "Allow",
             "Action": [
+                "bedrock:InvokeModel",
+            ],
+            "Resource": "arn:aws:bedrock:us-east-1::foundation-model/your-model-id"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
                 "s3:GetObject",
                 "s3:ListBucket"
             ],
