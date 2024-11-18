@@ -4,7 +4,7 @@
         {
             "Effect": "Allow",
             "Action": [
-                "bedrock:InvokeModel",
+                "bedrock:InvokeModel"
             ],
             "Resource": "arn:aws:bedrock:us-east-1::foundation-model/your-model-id"
         },
@@ -20,22 +20,23 @@
             ]
         },
         {
-          "Effect": "Allow",
-          "Action": [
-            "bedrock:RetrieveAndGenerate",
-            "bedrock:ListFoundationModels"
-          ],
-          "Resource" : "*",
-          "Condition": {
-             "StringEquals": {
-                 "aws:RequestedRegion": "your-region"
-        },
-            "ForAllValues:StringLike": {
-                "bedrock:ModelId": [
-                    "ai21.j2-*",
-                    "amazon.titan-*",
-                    "anthropic.claude-*"
-                ]
+            "Effect": "Allow",
+            "Action": [
+                "bedrock:RetrieveAndGenerate",
+                "bedrock:ListFoundationModels"
+            ],
+            "Resource": "*",
+            "Condition": {
+                "StringEquals": {
+                    "aws:RequestedRegion": "your-region"
+                },
+                "ForAllValues:StringLike": {
+                    "bedrock:ModelId": [
+                        "ai21.j2-*",
+                        "amazon.titan-*",
+                        "anthropic.claude-*"
+                    ]
+                }
             }
         },
         {
@@ -45,7 +46,7 @@
                 "logs:CreateLogStream",
                 "logs:PutLogEvents"
             ],
-            "Resource": "arn:aws:logs:us-west-2:123456789012:log-group:/aws/lambda/your-function-name:*"
+            "Resource": "arn:aws:logs:your-region:your-account-id:log-group:/aws/lambda/your-function-name:*"
         }
     ]
 }
