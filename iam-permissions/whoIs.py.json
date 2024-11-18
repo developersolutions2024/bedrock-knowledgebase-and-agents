@@ -34,7 +34,7 @@
                 "logs:CreateLogStream",
                 "logs:PutLogEvents"
             ],
-            "Resource": "arn:aws:logs:*:*:*"
+            "Resource": "arn:aws:logs:us-west-2:123456789012:log-group:/aws/lambda/your-function-name:*"
         }
     ]
 }
