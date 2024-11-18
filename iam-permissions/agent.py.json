@@ -6,7 +6,7 @@
             "Action": [
                 "bedrock:InvokeAgent"
             ],
-            "Resource": "arn:aws:bedrock:*:your-accound-id:agent-alias/*/*"
+            "Resource": "arn:aws:bedrock:*:your-accound-id:agent-alias/your-agent-name/*"
         },
         {
             "Effect": "Allow",
@@ -15,7 +15,7 @@
                 "logs:CreateLogStream",
                 "logs:PutLogEvents"
             ],
-            "Resource": "arn:aws:logs:*:*:*"
+            "Resource": "arn:aws:logs:your-region:your-account-id:log-group:/aws/lambda/your-lambda-function-name:*"
         }
     ]
 }
