@@ -32,9 +32,9 @@
                 },
                 "ForAllValues:StringLike": {
                     "bedrock:ModelId": [
-                        "ai21.j2-*",
-                        "amazon.titan-*",
-                        "anthropic.claude-*"
+                        "your-model-id-1",
+                        "your-model-id-2",
+                        "your-model-id-3",
                     ]
                 }
             }
