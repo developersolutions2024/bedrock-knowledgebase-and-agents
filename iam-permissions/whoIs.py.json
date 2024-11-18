@@ -25,7 +25,18 @@
             "bedrock:RetrieveAndGenerate",
             "bedrock:ListFoundationModels"
           ],
-          "Resource" : "*"
+          "Resource" : "*",
+          "Condition": {
+             "StringEquals": {
+                 "aws:RequestedRegion": "your-region"
+        },
+            "ForAllValues:StringLike": {
+                "bedrock:ModelId": [
+                    "ai21.j2-*",
+                    "amazon.titan-*",
+                    "anthropic.claude-*"
+                ]
+            }
         },
         {
             "Effect": "Allow",
