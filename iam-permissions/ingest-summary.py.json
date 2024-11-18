@@ -23,7 +23,7 @@
             "Action": [
                 "comprehend:DetectEntities"
             ],
-            "Resource": "arn:aws:comprehend:*:your-account-id:entity-recognizer-endpoint/*"
+            "Resource": "arn:aws:comprehend:*:your-account-id:entity-recognizer-endpoint/your-entity-recognizer-endpoint"
         },
         {
             "Effect": "Allow",
@@ -32,7 +32,7 @@
                 "logs:CreateLogStream",
                 "logs:PutLogEvents"
             ],
-            "Resource": "arn:aws:logs:*:*:*"
+            "Resource": "arn:aws:logs:your-region:your-account-id:log-group:/aws/lambda/your-lambda-function-name:*"
         }
     ]
 }
