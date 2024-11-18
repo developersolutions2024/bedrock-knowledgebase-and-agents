@@ -57,7 +57,7 @@ def lambda_handler(event, context):
                             }
                         }
                     },
-                    'knowledgeBaseId': 'H7RLOFWFX6',  # Ensure this ID is correct for your knowledge base
+                    'knowledgeBaseId': 'your_knowledgebase_ID',  # Ensure this ID is correct for your knowledge base
                     'modelArn': modelArn,
                     'retrievalConfiguration': {
                         'vectorSearchConfiguration': {
