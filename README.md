@@ -22,11 +22,13 @@
     - [ingest_enrich](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/tree/main/ingest_enrich) (Containerized)
     - [summary](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/tree/main/summary) (Containerized)
 - [AWS IAM Permissions](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/tree/main/iam-permissions)
-  - [Knowledge base](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/tree/main/iam-permissions/knowledge-base-permissions)
-    - [Amazon OpenSearch Service](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/knowledge-base-permissions/AmazonBedrockOSSPolicyForKnowledgeBase.json)
-    - [Amazon S3](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/knowledge-base-permissions/AmazonBedrockS3PolicyForKnowledgeBase.json)
-    - [Foundational Model](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/knowledge-base-permissions/FoundationalModelPolicyForKnowledgeBase.json)
-    - [Trusted relationship](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/knowledge-base-permissions/trusted-entities.json)
+  - Amazon Bedrock 
+    - [Knowledge base](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/tree/main/iam-permissions/knowledge-base-permissions)
+      - [Amazon OpenSearch Service](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/knowledge-base-permissions/AmazonBedrockOSSPolicyForKnowledgeBase.json)
+      - [Amazon S3](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/knowledge-base-permissions/AmazonBedrockS3PolicyForKnowledgeBase.json)
+      - [Foundational Model](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/knowledge-base-permissions/FoundationalModelPolicyForKnowledgeBase.json)
+      - [Trusted relationship](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/knowledge-base-permissions/trusted-entities.json)
+    - [Agent Role](
   - [agent.py](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/agent.py.json)
   - [ingest-enrich](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/ingest-enrich.py.json)
   - [ingest-summary](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/ingest-summary.py.json)
