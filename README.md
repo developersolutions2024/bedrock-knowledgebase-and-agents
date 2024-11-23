@@ -1,7 +1,6 @@
 # Amazon Bedrock Knowledge Base and Agents ChatBot Solution Demo
 
 ## Table of Content
-- [Ingest Summary Env](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/tree/main/ingest_summary)
 - [Instructions](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/tree/main/intructions)
   - [Add or remove access to Amazon Bedrock foundation models](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/intructions/Add%20or%20remove%20access%20to%20Amazon%20Bedrock%20foundation%20models.md)
   - [Create an Amazon Bedrock knowledge base](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/intructions/Create%20an%20Amazon%20Bedrock%20knowledge%20base.md)
