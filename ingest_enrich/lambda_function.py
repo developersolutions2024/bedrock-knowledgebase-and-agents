@@ -57,7 +57,7 @@ def invoke_model(prompt, client):
     response = client.invoke_model(
         body=json.dumps(request),
         #modelId="anthropic.claude-v2"
-        modelId="anthropic.claude-instant-v1"
+        modelId="your-model-id"
     )
     result = json.loads(response['body'].read().decode())
     return result['completion']
@@ -134,7 +134,8 @@ def invoke_model2(prompt, client):
 
     response = client.invoke_model(
         body=json.dumps(request),
-        modelId="us.anthropic.claude-3-haiku-20240307-v1:0"
+        #modelId="us.anthropic.claude-3-haiku-20240307-v1:0"
+        modelId="your-model-id"
     )
     result = json.loads(response['body'].read().decode())
     content = result["content"]
