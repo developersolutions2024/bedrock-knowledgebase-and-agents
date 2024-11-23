@@ -7,6 +7,18 @@
                 "bedrock:RetrieveAndGenerate"
             ],
             "Resource": "*"
+            "Condition": {
+                "StringEquals": {
+                    "aws:RequestedRegion": "your-region"
+                },
+                "ForAllValues:StringLike": {
+                    "bedrock:ModelId": [
+                        "your-model-id-1",
+                        "your-model-id-2",
+                        "your-model-id-3",
+                    ]
+                }
+            }
         },
         {
             "Effect": "Allow",
