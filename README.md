@@ -15,13 +15,13 @@
     - [agent.py](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/lambda-functions/appsync-lambdas/agent.py)
     - [no-agent.py](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/lambda-functions/appsync-lambdas/no-agent.py)
     - [uiTranslator.py](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/lambda-functions/appsync-lambdas/uiTranslator.py)   
-  - Independent Functions (work with Both API Gateway and AppSync)
+  - **Independent Functions** *(work with Both API Gateway and AppSync)*
     - [whoIs.py](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/lambda-functions/whoIs.py)
     - [ingest_summary](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/tree/main/ingest_summary) (Containerized)
     - [ingest_enrich](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/tree/main/ingest_enrich) (Containerized)
     - [summary](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/tree/main/summary) (Containerized)
 - [AWS IAM Permissions](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/tree/main/iam-permissions)
-  - Amazon Bedrock 
+  - **Amazon Bedrock**
     - [Knowledge base](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/tree/main/iam-permissions/bedrock/knowledgebase)
       - [Amazon OpenSearch Service](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/bedrock/knowledgebase/AmazonBedrockOSSPolicyForKnowledgeBase.json)
       - [Amazon S3](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/bedrock/knowledgebase/AmazonBedrockS3PolicyForKnowledgeBase.json)
@@ -29,7 +29,7 @@
       - [Trusted relationship](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/bedrock/knowledgebase/trusted-entities.json)
     - [Agent Service Role without a Knowledge base](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/bedrock/agent-service-role-without-a-kb.json)
     - [Agent Service Role with a Knowledge base](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/bedrock/agent-service-role-with-a-kb.json)
-  - AWS Lambda
+  - **AWS Lambda**
     - [agent](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/lambda/agent.json)
     - [no-agent](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/lambda/no-agent.json)
     - [ingest-enrich](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/lambda/ingest-enrich.json)
