@@ -10,12 +10,12 @@
   - [Use action groups to define actions for your agent to perform](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/intructions/Use%20action%20groups%20to%20define%20actions%20for%20your%20agent%20to%20perform.md)
 
 - [Lambda Functions](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/tree/main/lambda-functions)
-  - Amazon API Gateway
+  - [Amazon API Gateway](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/tree/main/lambda-functions/api-gateway-lambdas)
     - [agent.py](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/lambda-functions/api-gateway-lambdas/agent.py)
     - [no-agent.py](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/lambda-functions/api-gateway-lambdas/no-agent.py)
     - [uiTranslator](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/lambda-functions/uiTranslator.py)
       
-  - AWS AppSync
+  - [AWS AppSync](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/tree/main/lambda-functions/appsync-lambdas)
     - [agent.py](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/lambda-functions/appsync-lambdas/agent.py)
     - [no-agent](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/lambda-functions/appsync-lambdas/no-agent.py)
     - [uiTranslator](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/lambda-functions/appsync-lambdas/uiTranslator.py)
