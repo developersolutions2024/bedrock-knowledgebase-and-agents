@@ -26,8 +26,8 @@ kb_id = os.environ.get('KNOWLEDGE_BASE_ID', '')
 log_level = os.environ.get('LOG_LEVEL', 'ERROR').upper()
 aws_region = os.environ.get('AWS_REGION', 'us-east-1')
 
-logging.basicConfig(level=log_level)
 logger = logging.getLogger()
+logger.setLevel(log_level)
 # logger.setLevel(logging.INFO)
 
 

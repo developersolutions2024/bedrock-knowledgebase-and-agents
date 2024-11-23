@@ -32,12 +32,13 @@ with warnings.catch_warnings():
     from langchain_core.rate_limiters import InMemoryRateLimiter
 
 
-LOGLEVEL = os.environ.get('LOGLEVEL', 'ERROR').upper()
-logging.basicConfig(level=LOGLEVEL)
+log_level = str(os.environ.get('LOGLEVEL', 'ERROR').upper())
+#print(log_level)
 logger = logging.getLogger()
+logger.setLevel(log_level)
 
 # REGION
-region = "us-east-1"
+region = os.environ.get('AWS_REGION', 'us-east-1')
 
 # SUMMARISATION PARAMETER
 tokenLimit = 5 # MINIMUM SIZE
@@ -64,17 +65,17 @@ bedrock = boto3.client('bedrock-runtime', config=config, region_name = region)
 json_schema = {
   "title": "Document",
   "type": "object",
-  "required": ["meeting_number", "session_number", "commitee_number", "one_sentence_summary"],
+  "required": ["meeting_number", "session_number", "committee_number", "one_sentence_summary"],
   "properties": {
     "meeting_number": {
       "type": "integer",
       "default": 0,
       "description": "The meeting number."
     },      
-    "commitee_number": {
+    "committee_number": {
       "type": "integer",
       "default": 0,
-      "description": "The commitee number."
+      "description": "The committee number."
     },
     "session_number": {
       "type": "integer",
@@ -82,7 +83,7 @@ json_schema = {
       "description": "The session number."
     },
     "one_sentence_summary": {
-      "description": "A one sentence summary of the meeting repport.",
+      "description": "A one sentence summary of the meeting report.",
       "type": "string",
       "default": ""
     }
@@ -94,7 +95,7 @@ def invoke_model2(prompt, client):
     request = {
         "anthropic_version": "bedrock-2023-05-31",    
         "max_tokens": 200,
-        "system": "You are a meeting repport reader and you are able to provide specific information from the repport in JSON format.",    
+        "system": "You are a meeting report reader and you are able to provide specific information from the report in JSON format.",    
         "messages": [
             {
                 "role": "user",
@@ -115,7 +116,7 @@ def invoke_model2(prompt, client):
         "tools": [
             {
                 "name": "metadata_extractor",
-                "description": "Extract specific information about a meeting from the meeting report. Information include meeting number, session number, commitee number and one sentence summary of the meeting report",
+                "description": "Extract specific information about a meeting from the meeting report. Information include meeting number, session number, committee number and one sentence summary of the meeting report",
                 "input_schema": json_schema
                 
             }
@@ -237,22 +238,24 @@ def process_content(file_content: dict, chunker: Chunker) -> dict:
         content_metadata = content.get('contentMetadata', {})
         page_content = " ".join(content_body.split()[:1000]) # first 1000 words
         
-        meta = comprehend.detect_entities(
-            Text=page_content,
-            LanguageCode='en'
-        )
+        # meta = comprehend.detect_entities(
+        #     Text=page_content,
+        #     LanguageCode='en'
+        # )
 
-        entities = meta["Entities"]
-        entities2 = filter(  lambda x: ( str(x["Type"]) != "OTHER" )  , entities)
-        entities3 = filter(  lambda x: float(x["Score"]) > 0.5 , entities2)
-        emap = {}
-        for key in entities3:
-            emap[key["Type"].lower()] = list(map(lambda x: x, set( [] + emap.get(key["Type"].lower(), []) + [ key["Text"].lower().strip().replace('\n','').replace(',','') ] )))
+        # entities = meta["Entities"]
+        # entities2 = filter(  lambda x: ( str(x["Type"]) != "OTHER" )  , entities)
+        # entities3 = filter(  lambda x: float(x["Score"]) > 0.5 , entities2)
+        # emap = {}
+        # for key in entities3:
+        #     emap[key["Type"].lower()] = list(map(lambda x: x, set( [] + emap.get(key["Type"].lower(), []) + [ key["Text"].lower().strip().replace('\n','').replace(',','') ] )))
+ 
+        # logger.info('## COMPREHEND')           
+        # logger.info(emap)
 
-        logger.info('## COMPREHEND')           
-        logger.info(emap)
+        #doc_title = invoke_model2("\n\nHuman:\nWhat are the MEETING NUMBER, SESSION NUMBER, COMMITTEE NUMBER and ONE SENTENCE SUMMARY corresponding to this general assembly report ? \n<DOCUMENT_METADATA>\n" + str(emap.get("quantity",[])) + "\n<\DOCUMENT_METADATA>\n\n<DOCUMENT>\n" + page_content + """\n<\DOCUMENT>\nAnswer following this JSON format:\n{"meeting_number": <MEETING NUMBER>, "session_number": <SESSION NUMBER>, "committee_number": <COMMITTEE NUMBER>, "one_sentence_summary": "<ONE SENTENCE SUMMARY>"}\nUse 0 (zero) as a default fallback integer and "" (Empty string) as default fallback string if a value is missing""" + "\nAssistant:",bedrock)
+        doc_title = invoke_model2("\n\nHuman:\nWhat are the MEETING NUMBER, SESSION NUMBER, COMMITTEE NUMBER and ONE SENTENCE SUMMARY corresponding to this general assembly report ?\n\n<DOCUMENT>\n" + page_content + """\n<\DOCUMENT>\nAnswer following this JSON format:\n{"meeting_number": <MEETING NUMBER>, "session_number": <SESSION NUMBER>, "committee_number": <COMMITTEE NUMBER>, "one_sentence_summary": "<ONE SENTENCE SUMMARY>"}\nUse 0 (zero) as a default fallback integer and "" (Empty string) as default fallback string if a value is missing""" + "\nAssistant:",bedrock)
 
-        doc_title = invoke_model2("\n\nHuman:\nWhat are the MEETING NUMBER, SESSION NUMBER, COMMITTEE NUMBER and ONE SENTENCE SUMMARY corresponding to this general assembly repport ? \n<DOCUMENT_METADATA>\n" + str(emap.get("quantity",[])) + "\n<\DOCUMENT_METADATA>\n\n<DOCUMENT>\n" + page_content + """\n<\DOCUMENT>\nAnswer folowing this JSON format:\n{"meeting_number": <MEETING NUMBER>, "session_number": <SESSION NUMBER>, "commitee_number": <COMMITTEE NUMBER>, "one_sentence_summary": "<ONE SENTENCE SUMMARY>"}\nUse 0 (zero) as a default fallback integer and "" (Empty string) as default fallback string if a value is missing""" + "\nAssistant:",bedrock)
         logger.info('## BEDROCK TITLE')        
         logger.info(doc_title)
         json_title = json.dumps(doc_title)
