@@ -28,13 +28,15 @@
       - [Amazon S3](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/knowledge-base-permissions/AmazonBedrockS3PolicyForKnowledgeBase.json)
       - [Foundational Model](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/knowledge-base-permissions/FoundationalModelPolicyForKnowledgeBase.json)
       - [Trusted relationship](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/knowledge-base-permissions/trusted-entities.json)
-    - [Agent Role](
-  - [agent.py](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/agent.py.json)
-  - [ingest-enrich](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/ingest-enrich.py.json)
-  - [ingest-summary](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/ingest-summary.py.json)
-  - [summary](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/summary.py.json)
-  - [no-agent](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/no-agent.py.json)
-  - [uiTranslator](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/uiTranslator.py.json)
-  - [whoIs](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/whoIs.py.json)
+    - [Agent Role without Knowledge base](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/bedrock/agent-service-role-without-kb.json)
+    - [Agent Role with Knowledge base](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/bedrock/agent-service-role-with-kb.json)
+  - AWS Lambda
+    - [agent.py](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/agent.py.json)
+    - [ingest-enrich](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/ingest-enrich.py.json)
+    - [ingest-summary](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/ingest-summary.py.json)
+    - [summary](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/summary.py.json)
+    - [no-agent](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/no-agent.py.json)
+    - [uiTranslator](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/uiTranslator.py.json)
+    - [whoIs](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/whoIs.py.json)
 - [Language Configuration](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/language-config/translation.json)
    
