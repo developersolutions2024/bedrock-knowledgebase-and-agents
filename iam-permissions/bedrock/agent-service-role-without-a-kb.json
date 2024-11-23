@@ -6,7 +6,7 @@
             "Effect": "Allow",
             "Action": "bedrock:InvokeModel",
             "Resource": [
-                "arn:aws:bedrock:us-east-1::foundation-model/your-model-id"
+                "arn:aws:bedrock:your-region::foundation-model/your-model-id"
             ]
         }
     ]
