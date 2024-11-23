@@ -38,4 +38,5 @@
     - [uiTranslator](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/lambda/uiTranslator.json)
     - [whoIs](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/iam-permissions/lambda/whoIs.json)
 - [Language Configuration](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/language-config/translation.json)
+- [Axios API Call](https://github.com/developersolutions2024/bedrock-knowledgebase-and-agents/blob/main/api.js) *(Connected with API Gateway Invoke URL) [Only applicable if JavaScript is used)*
    
