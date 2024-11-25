@@ -8,7 +8,7 @@
                 "aoss:APIAccessAll"
             ],
             "Resource": [
-                "arn:aws:aoss:us-east-1:183631337369:collection/opensearch-collection-id"
+                "arn:aws:aoss:your-region:your-account-id:collection/opensearch-collection-id"
             ]
         }
     ]
